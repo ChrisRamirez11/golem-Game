@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://scenes/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/button.png" type="Texture" id=2]
 [ext_resource path="res://assets/Kenney Bold.ttf" type="DynamicFontData" id=3]
 
