@@ -3,8 +3,8 @@ extends KinematicBody2D
 signal rune_collected
 signal coin_collected
 
-export (int) var gravity = 1300
-export (int) var jump_force = -550
+export (int) var gravity = 1600
+export (int) var jump_force = -600
 
 var velocity = Vector2.ZERO
 const SPEED = 250

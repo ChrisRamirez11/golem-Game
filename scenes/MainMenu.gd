@@ -1,7 +1,7 @@
 extends Control
 
 func _ready():
-	pass
+	OS.center_window()
 
 
 func _on_StartButton_pressed():
