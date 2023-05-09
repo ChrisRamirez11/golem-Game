@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/Player/idle/AnimationHidleSheet.png" type="Texture" id=1]
 [ext_resource path="res://assets/Player/walk/GolemAnimationWalkSheet.png" type="Texture" id=2]
 [ext_resource path="res://assets/Player/jump/JumpAnimation.png" type="Texture" id=3]
-[ext_resource path="res://scenes/Player.gd" type="Script" id=5]
+[ext_resource path="res://scenes/entities/player/Player.gd" type="Script" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -68,11 +68,13 @@ extents = Vector2( 12.6667, 28.6667 )
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 5 )
+gravity = 1300
+jump_force = -550
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 9 )
 animation = "idle"
-frame = 3
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
