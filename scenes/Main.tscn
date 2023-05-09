@@ -662,6 +662,9 @@ __meta__ = {
 gravity = 1300
 jump_force = -550
 
+[node name="AnimatedSprite" parent="Player" index="0"]
+frame = 0
+
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 18, -70 )
 current = true
@@ -690,7 +693,6 @@ margin_left = 56.0
 margin_top = 91.0
 margin_right = 96.0
 margin_bottom = 115.0
-custom_colors/font_color = Color( 0.980392, 0, 0, 1 )
 
 [node name="Node2D" type="Node2D" parent="."]
 
