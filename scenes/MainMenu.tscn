@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/button.png" type="Texture" id=2]
@@ -9,6 +9,28 @@ size = 8
 outline_size = 2
 outline_color = Color( 0.333333, 0.243137, 0.176471, 1 )
 font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.576471, 0.490196, 0.0901961, 0.643137 )
+corner_radius_top_left = 45
+corner_radius_top_right = 45
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 45
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.576471, 0.490196, 0.0901961, 0.643137 )
+corner_radius_top_left = 45
+corner_radius_top_right = 45
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 45
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -24,15 +46,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -62.5
-margin_top = -44.0
-margin_right = 62.5
-margin_bottom = 44.0
+margin_left = -62.0
+margin_top = -92.0
+margin_right = 63.0
+margin_bottom = -4.0
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 margin_right = 125.0
 margin_bottom = 38.0
+focus_neighbour_top = NodePath("../QuitButton")
+focus_neighbour_bottom = NodePath("../QuitButton")
 custom_fonts/font = SubResource( 1 )
+custom_styles/focus = SubResource( 2 )
 text = "Start Game"
 icon = ExtResource( 2 )
 flat = true
@@ -43,6 +71,9 @@ icon_align = 1
 margin_top = 42.0
 margin_right = 125.0
 margin_bottom = 62.0
+focus_neighbour_top = NodePath("../StartButton")
+focus_neighbour_bottom = NodePath("../StartButton")
+custom_styles/focus = SubResource( 3 )
 text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]

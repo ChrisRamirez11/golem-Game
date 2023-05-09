@@ -64,8 +64,10 @@ func get_coin():
 	var areas = $HurtBox.get_overlapping_areas()
 	for area in areas:
 		if area.is_in_group("Collectibles"):
-			area.delete()
 			count +=1
+			area.delete()
+			emit_signal("coin_collected")
+
 
 func damage_ctrl(damage):
 	if health > 0:
@@ -81,6 +83,4 @@ func _on_HurtBox_area_entered(area):
 		area.delete()
 		if health > max_health:
 			health = 100
-	if area.name == "Coin":
-		emit_signal("coin_collected")
 
