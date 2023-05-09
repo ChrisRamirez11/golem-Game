@@ -661,7 +661,7 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 1
+frame = 3
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 18, -70 )
@@ -858,6 +858,7 @@ script = ExtResource( 7 )
 position = Vector2( 256, 368 )
 
 [connection signal="coin_collected" from="Player" to="GUI/StatusGUI" method="_on_Player_coin_collected"]
+[connection signal="rune_collected" from="Player" to="GUI/StatusGUI" method="_on_Player_rune_collected"]
 
 [editable path="Player"]
 [editable path="GUI/StatusGUI"]
