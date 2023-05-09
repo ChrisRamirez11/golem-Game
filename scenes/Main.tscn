@@ -663,7 +663,7 @@ gravity = 1300
 jump_force = -550
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 2
+frame = 0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 18, -70 )
@@ -687,6 +687,12 @@ player_node = NodePath("../../Player")
 [node name="Area2D" parent="GUI/StatusGUI" index="0" groups=["GUI"]]
 
 [node name="Sprite" parent="GUI/StatusGUI/Area2D" index="0" groups=["GUI"]]
+
+[node name="Label" parent="GUI/StatusGUI" index="1"]
+margin_left = 56.0
+margin_top = 91.0
+margin_right = 96.0
+margin_bottom = 115.0
 
 [node name="Node2D" type="Node2D" parent="."]
 
