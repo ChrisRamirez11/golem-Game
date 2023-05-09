@@ -5,8 +5,9 @@
 [ext_resource path="res://assets/Kenney Bold.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 24
-outline_color = Color( 0.517647, 0.109804, 0.109804, 1 )
+size = 19
+outline_size = 1
+outline_color = Color( 0.105882, 0.105882, 0.105882, 1 )
 font_data = ExtResource( 3 )
 
 [node name="CanvasLayer" type="CanvasLayer"]
@@ -35,6 +36,8 @@ margin_left = 48.0
 margin_top = 91.0
 margin_right = 88.0
 margin_bottom = 127.0
+custom_colors/font_color = Color( 0.960784, 0.913725, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.105882, 0.105882, 0.105882, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "3"
 align = 2

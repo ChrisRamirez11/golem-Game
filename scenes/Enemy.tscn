@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Enemy.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -14,6 +14,9 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 24, 24 )
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 30, 21 )
+
 [node name="Enemy" type="KinematicBody2D"]
 script = ExtResource( 1 )
 __meta__ = {
@@ -21,8 +24,15 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+rotation = 1.5708
 frames = SubResource( 1 )
 animation = "moving"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
+
+[node name="EnemyArea" type="Area2D" parent="." groups=["Enemies"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea"]
+position = Vector2( 0, 9 )
+shape = SubResource( 3 )

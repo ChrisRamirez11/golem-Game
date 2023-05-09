@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 signal rune_collected
 signal coin_collected
+signal enemy_detected
 
 export (int) var gravity = 1600
 export (int) var jump_force = -600
@@ -83,4 +84,10 @@ func _on_HurtBox_area_entered(area):
 		area.delete()
 		if health > max_health:
 			health = 100
+	if area.is_in_group("Enemies"):
+		emit_signal("enemy_detected")
 
+
+
+func _on_Player_enemy_detected() -> void:
+	damage_ctrl(10.0)

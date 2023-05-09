@@ -6,8 +6,6 @@ onready var label: Label = $Label
 var count = 0
 onready var label_2: Label = $Label2
 
-func _ready() -> void:
-	label_2.set_text("3")
 
 
 func _on_Player_rune_collected():
