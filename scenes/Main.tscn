@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scenes/entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/TileMap/tile00.png" type="Texture" id=2]
@@ -10,7 +10,7 @@
 [ext_resource path="res://scenes/Main.gd" type="Script" id=8]
 [ext_resource path="res://assets/background.png" type="Texture" id=9]
 [ext_resource path="res://scenes/Coin.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/entities/player/Player.gd" type="Script" id=11]
+
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 16, 0, 16 )
@@ -657,10 +657,11 @@ tile_data = PoolIntArray( 458748, 0, 0, 458813, 23, 0, 458828, 5, 0, 458829, 16,
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 7, 376 )
-script = ExtResource( 11 )
 __meta__ = {
 "_edit_group_": true
 }
+gravity = 1300
+jump_force = -550
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 18, -70 )
@@ -855,6 +856,9 @@ script = ExtResource( 7 )
 
 [node name="Coin" parent="." instance=ExtResource( 10 )]
 position = Vector2( 256, 368 )
+
+[connection signal="coin_collected" from="Player" to="GUI/StatusGUI" method="_on_Player_coin_collected"]
+[connection signal="rune_collected" from="Player" to="GUI/StatusGUI" method="_on_Player_rune_collected"]
 
 [editable path="Player"]
 [editable path="GUI/StatusGUI"]
