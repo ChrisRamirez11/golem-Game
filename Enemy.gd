@@ -14,9 +14,9 @@ func _physics_process(delta: float) -> void:
 	
 	
 	if is_on_wall():
-		if $AnimatedSprite.flip_v == true:
-			$AnimatedSprite.flip_v = false
-		else: $AnimatedSprite.flip_v = true
+		if $AnimatedSprite.flip_h == true:
+			$AnimatedSprite.flip_h = false
+		else: $AnimatedSprite.flip_h = true
 		
 		velocity.x *= -1.0
 	
