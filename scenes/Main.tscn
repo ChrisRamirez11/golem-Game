@@ -669,6 +669,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
+[node name="AnimatedSprite" parent="Player" index="0"]
+frame = 2
+
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 18, -70 )
 current = true
@@ -716,10 +719,14 @@ text = "/
 
 [node name="PauseScreen" type="CanvasLayer" parent="GUI"]
 
-[node name="PauseButton" type="TextureButton" parent="GUI"]
-margin_left = 744.0
-margin_right = 808.0
-margin_bottom = 72.0
+[node name="PauseBContainer" type="CanvasLayer" parent="GUI"]
+
+[node name="PauseButton" type="TextureButton" parent="GUI/PauseBContainer"]
+margin_left = 952.0
+margin_top = 8.0
+margin_right = 1016.0
+margin_bottom = 80.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 13 )
 expand = true
 stretch_mode = 4
@@ -906,7 +913,7 @@ scale = Vector2( 1.5, 1.5 )
 [connection signal="coin_collected" from="Player" to="GUI/StatusGUI" method="_on_Player_coin_collected"]
 [connection signal="enemy_detected" from="Player" to="Player" method="_on_Player_enemy_detected"]
 [connection signal="rune_collected" from="Player" to="GUI/StatusGUI" method="_on_Player_rune_collected"]
-[connection signal="pressed" from="GUI/PauseButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="pressed" from="GUI/PauseBContainer/PauseButton" to="." method="_on_PauseButton_pressed"]
 
 [editable path="Player"]
 [editable path="GUI/StatusGUI"]
