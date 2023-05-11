@@ -6,19 +6,21 @@ var paused: Object = null
 
 func _ready() -> void:
 	OS.center_window()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _process(delta):
-	if Input.is_mouse_button_pressed(BUTTON_LEFT):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	_on_PauseButton_pressed()
 	
 
 
 func _on_PauseButton_pressed():
-	if paused == null:
-		paused = load(PauseMenu).instance()
-		$GUI/PauseScreen.add_child(paused)
-		paused.connect("nuller", self, "on_paused_quit")
-		get_tree().paused = true
+	if Input.is_action_pressed("ui_cancel"):
+		if paused == null:
+			paused = load(PauseMenu).instance()
+			$GUI/PauseScreen.add_child(paused)
+			paused.connect("nuller", self, "on_paused_quit")
+			get_tree().paused = true
+
 
 func on_paused_quit():
 	paused = null
