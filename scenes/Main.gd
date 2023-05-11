@@ -3,10 +3,10 @@ extends Node2D
 var PauseMenu: String = "res://scenes/PauseMenu.tscn"
 var paused: Object = null
 
-
 func _ready() -> void:
 	OS.center_window()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	$GUI/StatusGUI/Label2.set_text(String ($GoldChest.get_child_count()))
 
 func _process(delta):
 	_on_PauseButton_pressed()
