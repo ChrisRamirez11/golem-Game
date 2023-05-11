@@ -8,6 +8,7 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$GUI/StatusGUI/Label2.set_text(String ($GoldChest.get_child_count()))
 
+<<<<<<< Updated upstream
 func _process(delta):
 	_on_PauseButton_pressed()
 	
@@ -24,3 +25,6 @@ func _on_PauseButton_pressed():
 
 func on_paused_quit():
 	paused = null
+=======
+
+>>>>>>> Stashed changes

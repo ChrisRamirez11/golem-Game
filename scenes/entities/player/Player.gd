@@ -43,7 +43,6 @@ func get_input():
 		$AnimatedSprite.flip_h = false
 	if Input.is_action_just_pressed("ui_up") and is_on_floor():
 		is_jumping = true
-
 		velocity.y = jump_force
 
 
@@ -98,3 +97,5 @@ func _on_HurtBox_area_entered(area):
 
 func _on_Player_enemy_detected() -> void:
 	damage_ctrl(10.0)
+
+
