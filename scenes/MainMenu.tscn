@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=6 format=2]
-=======
 [gd_scene load_steps=9 format=2]
->>>>>>> Stashed changes
 
 [ext_resource path="res://scenes/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/button.png" type="Texture" id=2]
@@ -26,8 +22,6 @@ expand_margin_right = 1.0
 expand_margin_top = 1.0
 expand_margin_bottom = 1.0
 
-<<<<<<< Updated upstream
-=======
 [sub_resource type="InputEventAction" id=4]
 action = "enter_in"
 
@@ -45,7 +39,6 @@ expand_margin_right = 5.0
 expand_margin_top = 5.0
 expand_margin_bottom = 5.0
 
->>>>>>> Stashed changes
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -71,6 +64,8 @@ __meta__ = {
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 margin_right = 125.0
 margin_bottom = 38.0
+focus_neighbour_top = NodePath("../QuitButton")
+focus_neighbour_bottom = NodePath("../QuitButton")
 custom_fonts/font = SubResource( 1 )
 custom_styles/focus = SubResource( 2 )
 shortcut = SubResource( 5 )
@@ -83,15 +78,11 @@ icon_align = 1
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 margin_top = 42.0
 margin_right = 125.0
-margin_bottom = 80.0
-custom_fonts/font = SubResource( 1 )
-custom_styles/focus = SubResource( 2 )
-text = "Exit"
-icon = ExtResource( 2 )
-flat = true
-clip_text = true
-icon_align = 1
+margin_bottom = 62.0
+focus_neighbour_top = NodePath("../StartButton")
+focus_neighbour_bottom = NodePath("../StartButton")
+custom_styles/focus = SubResource( 3 )
+text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_StartButton_pressed"]
