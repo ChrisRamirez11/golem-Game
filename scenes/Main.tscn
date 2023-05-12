@@ -673,7 +673,7 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 2
+frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 18, -70 )
@@ -930,6 +930,9 @@ scale = Vector2( 1.5, 1.5 )
 [connection signal="monolith_activation" from="Player" to="Monolith" method="_on_Player_monolith_activation"]
 [connection signal="rune_collected" from="Player" to="GUI/StatusGUI" method="_on_Player_rune_collected"]
 [connection signal="pressed" from="GUI/PauseBContainer/PauseButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="animation_finished" from="Enemy/AnimatedSprite" to="Enemy" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="area_entered" from="Enemy/Area2D" to="Enemy" method="_on_Area2D_area_entered"]
 
 [editable path="Player"]
 [editable path="GUI/StatusGUI"]
+[editable path="Enemy"]
