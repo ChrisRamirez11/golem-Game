@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
 [gd_scene load_steps=6 format=2]
-=======
-[gd_scene load_steps=9 format=2]
->>>>>>> Stashed changes
 
 [ext_resource path="res://scenes/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/button.png" type="Texture" id=2]
@@ -20,32 +16,11 @@ corner_radius_top_left = 45
 corner_radius_top_right = 45
 corner_radius_bottom_right = 45
 corner_radius_bottom_left = 45
-corner_detail = 2
 expand_margin_left = 1.0
 expand_margin_right = 1.0
 expand_margin_top = 1.0
 expand_margin_bottom = 1.0
 
-<<<<<<< Updated upstream
-=======
-[sub_resource type="InputEventAction" id=4]
-action = "enter_in"
-
-[sub_resource type="ShortCut" id=5]
-shortcut = SubResource( 4 )
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.576471, 0.490196, 0.0901961, 0.643137 )
-corner_radius_top_left = 45
-corner_radius_top_right = 45
-corner_radius_bottom_right = 45
-corner_radius_bottom_left = 45
-expand_margin_left = 5.0
-expand_margin_right = 5.0
-expand_margin_top = 5.0
-expand_margin_bottom = 5.0
-
->>>>>>> Stashed changes
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -73,7 +48,6 @@ margin_right = 125.0
 margin_bottom = 38.0
 custom_fonts/font = SubResource( 1 )
 custom_styles/focus = SubResource( 2 )
-shortcut = SubResource( 5 )
 text = "Start Game"
 icon = ExtResource( 2 )
 flat = true

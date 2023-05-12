@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemies/scarab_walk.png" type="Texture" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 2 )
@@ -14,11 +13,6 @@ region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": false,
-"name": "dead",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
 "name": "moving",
@@ -30,9 +24,6 @@ extents = Vector2( 13.75, 11.7917 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 15, 8.375 )
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 16.6667, 2.91667 )
 
 [node name="Enemy" type="KinematicBody2D"]
 scale = Vector2( 1.2, 1.2 )
@@ -50,10 +41,5 @@ shape = SubResource( 2 )
 [node name="EnemyArea" type="Area2D" parent="." groups=["Enemies"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea"]
+visible = false
 shape = SubResource( 3 )
-
-[node name="StompBox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StompBox"]
-position = Vector2( 0, -11.6667 )
-shape = SubResource( 6 )
