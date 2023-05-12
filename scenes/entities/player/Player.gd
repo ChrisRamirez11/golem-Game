@@ -3,6 +3,7 @@ extends KinematicBody2D
 signal rune_collected
 signal coin_collected
 signal enemy_detected
+signal monolith_activation
 
 export (int) var gravity = 1600
 export (int) var jump_force = -600
@@ -13,6 +14,8 @@ var is_jumping = false
 var health =  100
 var max_health = 100
 var count = 0
+
+onready var status_gui = $"../GUI/StatusGUI"
 
 
 func _physics_process(delta):
@@ -85,6 +88,10 @@ func _on_HurtBox_area_entered(area):
 			health = 100
 	if area.is_in_group("Enemies"):
 		emit_signal("enemy_detected")
+	if area.name == "Monolith":
+		if count == int (status_gui.get_node("Label2").get_text()):
+			emit_signal("monolith_activation")
+		
 
 
 
