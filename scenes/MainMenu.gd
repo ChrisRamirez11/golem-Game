@@ -13,7 +13,7 @@ func _ready():
 
 func _on_StartButton_pressed():
 	focus_sound.play()
-	timer.start(0.4)
+	timer.start(0.3)
 
 
 
