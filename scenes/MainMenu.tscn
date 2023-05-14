@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/button.png" type="Texture" id=2]
 [ext_resource path="res://assets/Kenney Bold.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://assets/focus.wav" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 8
@@ -47,8 +46,6 @@ __meta__ = {
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 margin_right = 125.0
 margin_bottom = 38.0
-focus_neighbour_top = NodePath("../QuitButton")
-focus_neighbour_bottom = NodePath("../QuitButton")
 custom_fonts/font = SubResource( 1 )
 custom_styles/focus = SubResource( 2 )
 text = "Start Game"
@@ -61,8 +58,6 @@ icon_align = 1
 margin_top = 42.0
 margin_right = 125.0
 margin_bottom = 80.0
-focus_neighbour_top = NodePath("../StartButton")
-focus_neighbour_bottom = NodePath("../StartButton")
 custom_fonts/font = SubResource( 1 )
 custom_styles/focus = SubResource( 2 )
 text = "Exit"
@@ -71,21 +66,6 @@ flat = true
 clip_text = true
 icon_align = 1
 
-[node name="focus_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 4 )
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
-[connection signal="focus_exited" from="VBoxContainer/StartButton" to="." method="_on_StartButton_focus_exited"]
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
-<<<<<<< HEAD
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_StartButton_pressed"]
-=======
-[connection signal="focus_exited" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_focus_exited"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_StartButton_pressed"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
->>>>>>> 8920fd4b8300ad24a024c626e4619c96122bbfd9
