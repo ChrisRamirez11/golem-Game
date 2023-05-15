@@ -1,12 +1,15 @@
 extends KinematicBody2D
 
+const PLAYER_HBPOSITION_TO_FOOT_DISTANCE = 45
+
 var speed = 150
 var velocity = Vector2.ZERO
 var gravity = 1600
+
 onready var player: KinematicBody2D = $"../Player"
 onready var animated_sprite: AnimatedSprite = $AnimatedSprite
 onready var area_2d: Area2D = $Area2D
-const PLAYER_HBPOSITION_TO_FOOT_DISTANCE = 45
+onready var enemy_area: Area2D = $EnemyArea
 
 
 func _ready() -> void:
@@ -37,3 +40,12 @@ func _on_Area2D_area_entered(area: Area2D) -> void:
 func _on_AnimatedSprite_animation_finished() -> void:
 	if animated_sprite.get_animation() == "dead":
 		queue_free()
+
+
+func _on_Player_enemy_detected() -> void:
+	$Timer.start()
+
+
+func _on_Timer_timeout() -> void:
+	enemy_area.set_collision_mask_bit(0, true)
+	set_collision_mask_bit(0,true)

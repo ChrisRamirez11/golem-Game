@@ -15,7 +15,9 @@ var health =  100
 var max_health = 100
 var count = 0
 
+onready var player: KinematicBody2D = $"."
 onready var status_gui = $"../GUI/StatusGUI"
+onready var hurt_box: Area2D = $HurtBox
 
 
 func _physics_process(delta):
@@ -88,13 +90,22 @@ func _on_HurtBox_area_entered(area):
 		if health > max_health:
 			health = 100
 	if area.is_in_group("Enemies"):
+		velocity.y += -100
+		velocity.x += -1000
+		velocity = move_and_slide(velocity, Vector2.UP)
 		emit_signal("enemy_detected")
+		enemy_collision_setter_false(area)
 	if area.name == "Monolith":
 		if count == int (status_gui.get_node("Label2").get_text()):
 			emit_signal("monolith_activation")
-		
-
 
 
 func _on_Player_enemy_detected() -> void:
 	damage_ctrl(10.0)
+
+func enemy_collision_setter_false(area):
+	area.set_collision_mask_bit(0, false)
+	area.get_parent().set_collision_mask_bit(0, false)
+	player.set_collision_mask_bit(1, false)
+	hurt_box.set_collision_mask_bit(1, false)
+
