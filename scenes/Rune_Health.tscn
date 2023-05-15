@@ -3,6 +3,7 @@
 [ext_resource path="res://assets/runes/rune_health.png" type="Texture" id=1]
 
 [node name="Rune_Health" type="Area2D"]
+collision_layer = 8
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
