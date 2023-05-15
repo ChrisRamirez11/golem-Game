@@ -57,5 +57,5 @@ shape = SubResource( 3 )
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 4.96705e-08, -11.6667 )
+position = Vector2( 1.98682e-07, -11.6667 )
 shape = SubResource( 6 )

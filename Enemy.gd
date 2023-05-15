@@ -5,6 +5,8 @@ var velocity = Vector2.ZERO
 var gravity = 1600
 onready var player: KinematicBody2D = $"../Player"
 onready var animated_sprite: AnimatedSprite = $AnimatedSprite
+onready var area_2d: Area2D = $Area2D
+const PLAYER_HBPOSITION_TO_FOOT_DISTANCE = 45
 
 
 func _ready() -> void:
@@ -25,15 +27,11 @@ func _physics_process(delta: float) -> void:
 	velocity.y = move_and_slide(velocity, Vector2.UP).y
 
 
-
-func _on_EnemyArea_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
-
-
 func _on_Area2D_area_entered(area: Area2D) -> void:
-	if area.get_parent().name == "Player":
-		player.velocity.y = -600
-		animated_sprite.play("dead")
+	if area.get_global_position().y + PLAYER_HBPOSITION_TO_FOOT_DISTANCE < area_2d.get_global_position().y:
+		if area.get_parent().name == "Player":
+			player.velocity.y = -600
+			animated_sprite.play("dead")
 
 
 func _on_AnimatedSprite_animation_finished() -> void:
