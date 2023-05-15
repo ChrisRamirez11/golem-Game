@@ -31,4 +31,4 @@ func _on_QuitButton_focus_exited() -> void:
 
 
 func _on_Timer_timeout() -> void:
-	get_tree().change_scene("res://scenes/Main.tscn")
+	get_tree().change_scene("res://scenes/MainJerry.tscn")

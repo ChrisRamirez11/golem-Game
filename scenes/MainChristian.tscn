@@ -1254,36 +1254,21 @@ z_index = -2
 position = Vector2( 1640, 450 )
 scale = Vector2( 1.5, 1.5 )
 
-[node name="AnimatedSprite" parent="Enemy" index="0"]
-frame = 0
-
 [node name="Enemy2" parent="." instance=ExtResource( 12 )]
 position = Vector2( 4104, 352 )
 scale = Vector2( 1.5, 1.5 )
-
-[node name="AnimatedSprite" parent="Enemy2" index="0"]
-frame = 0
 
 [node name="Enemy3" parent="." instance=ExtResource( 12 )]
 position = Vector2( 4832, 16 )
 scale = Vector2( 1.5, 1.5 )
 
-[node name="AnimatedSprite" parent="Enemy3" index="0"]
-frame = 0
-
 [node name="Enemy4" parent="." instance=ExtResource( 12 )]
 position = Vector2( 4880, -320 )
 scale = Vector2( 1.5, 1.5 )
 
-[node name="AnimatedSprite" parent="Enemy4" index="0"]
-frame = 0
-
 [node name="Enemy5" parent="." instance=ExtResource( 12 )]
 position = Vector2( 5152, -320 )
 scale = Vector2( 1.5, 1.5 )
-
-[node name="AnimatedSprite" parent="Enemy5" index="0"]
-frame = 0
 
 [node name="Monolith" parent="." instance=ExtResource( 14 )]
 position = Vector2( 1896, 424 )
