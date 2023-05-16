@@ -83,7 +83,7 @@ func damage_ctrl(damage):
 
 
 func _on_HurtBox_area_entered(area):
-	if area.name == "Rune_Health":
+	if area.is_in_group("Rune_Health"):
 		emit_signal("rune_collected")
 		health += 30
 		area.delete()
