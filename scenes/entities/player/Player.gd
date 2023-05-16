@@ -14,11 +14,14 @@ var is_jumping = false
 var health =  100
 var max_health = 100
 var count = 0
+var color := Color(1,0,0,0.6)
+var default_modulate = modulate
 
 onready var player: KinematicBody2D = $"."
 onready var status_gui = $"../GUI/StatusGUI"
 onready var hurt_box: Area2D = $HurtBox
 onready var camera_2d: Camera2D = $Camera2D
+onready var tween_hurt: Tween = $TweenHurt
 
 
 func _physics_process(delta):
@@ -95,6 +98,7 @@ func _on_HurtBox_area_entered(area):
 		velocity.x += -1000
 		velocity = move_and_slide(velocity, Vector2.UP)
 		camera_2d.shake()
+		tween_hurt()
 		emit_signal("enemy_detected")
 		enemy_collision_setter_false(area)
 	if area.name == "Monolith":
@@ -110,4 +114,11 @@ func enemy_collision_setter_false(area):
 	area.get_parent().set_collision_mask_bit(0, false)
 	player.set_collision_mask_bit(1, false)
 	hurt_box.set_collision_mask_bit(1, false)
+
+
+func tween_hurt():
+	tween_hurt.interpolate_property(self, "modulate", color, default_modulate, 0.8, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+	tween_hurt.start()
+
+
 
