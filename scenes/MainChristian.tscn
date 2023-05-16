@@ -714,7 +714,7 @@ outline_size = 1
 outline_color = Color( 0.105882, 0.105882, 0.105882, 1 )
 font_data = ExtResource( 11 )
 
-[node name="Main" type="Node2D"]
+[node name="Main2" type="Node2D"]
 position = Vector2( 208, 96 )
 script = ExtResource( 8 )
 __meta__ = {
