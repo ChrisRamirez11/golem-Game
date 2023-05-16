@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://scenes/entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/TileMap/tile00.png" type="Texture" id=2]
@@ -17,6 +17,9 @@
 [ext_resource path="res://scenes/Monolith.gd" type="Script" id=15]
 [ext_resource path="res://scenes/ExitCave.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/TileMap/tile01.png" type="Texture" id=17]
+[ext_resource path="res://assets/waterTile/waterTile_animatedtexture.tres" type="Texture" id=18]
+[ext_resource path="res://assets/waterTile/deep_whater.png" type="Texture" id=19]
+[ext_resource path="res://assets/cave/EntryCave.tscn" type="PackedScene" id=20]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 16, 0, 16 )
@@ -546,20 +549,6 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 24/shape_one_way_margin = 0.0
 24/shapes = [  ]
 24/z_index = 0
-25/name = "tile00.png 25"
-25/texture = ExtResource( 2 )
-25/tex_offset = Vector2( 0, 0 )
-25/modulate = Color( 1, 1, 1, 1 )
-25/region = Rect2( 160, 0, 32, 32 )
-25/tile_mode = 0
-25/occluder_offset = Vector2( 0, 0 )
-25/navigation_offset = Vector2( 0, 0 )
-25/shape_offset = Vector2( 0, 0 )
-25/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-25/shape_one_way = false
-25/shape_one_way_margin = 0.0
-25/shapes = [  ]
-25/z_index = 0
 26/name = "tile00.png 26"
 26/texture = ExtResource( 2 )
 26/tex_offset = Vector2( 0, 0 )
@@ -679,20 +668,36 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 31/z_index = 0
-32/name = "tile00.png 32"
-32/texture = ExtResource( 2 )
-32/tex_offset = Vector2( 0, 0 )
-32/modulate = Color( 1, 1, 1, 0.396078 )
-32/region = Rect2( 160, 0, 32, 32 )
-32/tile_mode = 0
-32/occluder_offset = Vector2( 0, 0 )
-32/navigation_offset = Vector2( 0, 0 )
-32/shape_offset = Vector2( 0, 0 )
-32/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-32/shape_one_way = false
-32/shape_one_way_margin = 0.0
-32/shapes = [  ]
-32/z_index = 0
+
+[sub_resource type="TileSet" id=29]
+0/name = "waterTile_animatedtexture.tres 0"
+0/texture = ExtResource( 18 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 0.529412 )
+0/region = Rect2( 0, 0, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "deep_whater.png 1"
+1/texture = ExtResource( 19 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 0.529412 )
+1/region = Rect2( 0, 0, 32, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
 
 [sub_resource type="DynamicFont" id=25]
 size = 20
@@ -700,7 +705,25 @@ outline_size = 1
 outline_color = Color( 0.105882, 0.105882, 0.105882, 1 )
 font_data = ExtResource( 11 )
 
-[node name="Main2" type="Node2D"]
+[sub_resource type="GDScript" id=30]
+script/source = "extends Area2D
+
+var damage = 0.50
+"
+
+[sub_resource type="RectangleShape2D" id=31]
+extents = Vector2( 657.333, 62.5 )
+
+[sub_resource type="GDScript" id=32]
+script/source = "extends Area2D
+
+var damage = 0.50
+"
+
+[sub_resource type="RectangleShape2D" id=33]
+extents = Vector2( 196.667, 62.5 )
+
+[node name="Main" type="Node2D"]
 position = Vector2( 208, 96 )
 script = ExtResource( 8 )
 __meta__ = {
@@ -728,7 +751,7 @@ cell_size = Vector2( 32, 32 )
 collision_layer = 16
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( -130972, 29, 0, -130968, 29, 0, -130964, 29, 0, -65438, 20, 0, -65437, 21, 0, -65436, 21, 0, -65435, 21, 0, -65434, 21, 0, -65433, 21, 0, -65432, 21, 0, -65431, 21, 0, -65430, 21, 0, -65429, 21, 0, -65428, 22, 0, 94, 29, 0, 65630, 8, 0, 65631, 16, 0, 131166, 8, 0, 131167, 9, 0, 131168, 16, 0, 131182, 5, 0, 131183, 16, 0, 131197, 5, 0, 131198, 16, 0, 196699, 23, 0, 196702, 11, 0, 196703, 9, 0, 196704, 9, 0, 196705, 16, 0, 196718, 8, 0, 196719, 10, 0, 196732, 5, 0, 262239, 11, 0, 262240, 9, 0, 262241, 9, 0, 262242, 16, 0, 262254, 8, 0, 262255, 10, 0, 262261, 29, 0, 262267, 5, 0, 327776, 11, 0, 327777, 9, 0, 327778, 10, 0, 327779, 17, 0, 327784, 29, 0, 327790, 8, 0, 327791, 9, 0, 327792, 28, 0, 327793, 28, 0, 327794, 28, 0, 327795, 28, 0, 327796, 28, 0, 327797, 12, 0, 327798, 28, 0, 327799, 28, 0, 327800, 28, 0, 327801, 28, 0, 327802, 28, 0, 393313, 11, 0, 393314, 13, 0, 393315, 19, 0, 393316, 20, 0, 393317, 21, 0, 393318, 21, 0, 393319, 22, 0, 393320, 31, 0, 393321, 23, 0, 393326, 8, 0, 393327, 9, 0, 393328, 9, 0, 393329, 9, 0, 393330, 9, 0, 393331, 9, 0, 393332, 9, 0, 393333, 9, 0, 393334, 9, 0, 393335, 9, 0, 393336, 9, 0, 393337, 9, 0, 458813, 23, 0, 458828, 5, 0, 458829, 28, 0, 458840, 20, 0, 458841, 22, 0, 458862, 8, 0, 458863, 9, 0, 458864, 9, 0, 458865, 9, 0, 458866, 9, 0, 458867, 9, 0, 458868, 9, 0, 458869, 9, 0, 458870, 9, 0, 458871, 9, 0, 458872, 9, 0, 524357, 20, 0, 524358, 21, 0, 524359, 21, 0, 524360, 22, 0, 524364, 8, 0, 524365, 9, 0, 524366, 16, 0, 524373, 23, 0, 524380, 23, 0, 524396, 23, 0, 524398, 8, 0, 524399, 9, 0, 524400, 9, 0, 524401, 9, 0, 524402, 9, 0, 524403, 9, 0, 524404, 9, 0, 524405, 9, 0, 524406, 9, 0, 524407, 9, 0, 524408, 9, 0, 589881, 20, 0, 589882, 22, 0, 589889, 23, 0, 589900, 8, 0, 589901, 9, 0, 589902, 9, 0, 589903, 16, 0, 589934, 8, 0, 589935, 9, 0, 589936, 9, 0, 589937, 9, 0, 589938, 9, 0, 589939, 9, 0, 589940, 9, 0, 589941, 9, 0, 589942, 9, 0, 589943, 9, 0, 589944, 9, 0, 655383, 20, 0, 655384, 21, 0, 655385, 21, 0, 655386, 22, 0, 655436, 8, 0, 655437, 9, 0, 655438, 9, 0, 655439, 9, 0, 655440, 16, 0, 655455, 23, 0, 655466, 29, 0, 655470, 8, 0, 655471, 9, 0, 655472, 9, 0, 655473, 9, 0, 655474, 9, 0, 655475, 9, 0, 655476, 9, 0, 655477, 9, 0, 655478, 9, 0, 655479, 9, 0, 655480, 9, 0, 720924, 23, 0, 720959, 23, 0, 720972, 9, 0, 720973, 9, 0, 720974, 9, 0, 720975, 9, 0, 720976, 9, 0, 720977, 16, 0, 720999, 29, 0, 721002, 31, 0, 721006, 8, 0, 721007, 9, 0, 721008, 9, 0, 721009, 9, 0, 721010, 9, 0, 721011, 9, 0, 721012, 9, 0, 721013, 9, 0, 721014, 9, 0, 721015, 9, 0, 786453, 29, 0, 786463, 29, 0, 786476, 5, 0, 786477, 28, 0, 786478, 16, 0, 786488, 20, 0, 786489, 21, 0, 786490, 21, 0, 786491, 22, 0, 786508, 9, 0, 786509, 9, 0, 786510, 9, 0, 786511, 9, 0, 786512, 9, 0, 786513, 9, 0, 786516, 29, 0, 786521, 29, 0, 786524, 20, 0, 786525, 22, 0, 786530, 29, 0, 786531, 29, 0, 786535, 31, 0, 786542, 8, 0, 786543, 9, 0, 786544, 9, 0, 786545, 9, 0, 786546, 9, 0, 786547, 9, 0, 786548, 9, 0, 786549, 9, 0, 851973, 7, 0, 851974, 7, 0, 851987, 29, 0, 851989, 30, 0, 851999, 30, 0, 852011, 5, 0, 852012, 9, 0, 852013, 9, 0, 852014, 9, 0, 852015, 16, 0, 852020, 5, 0, 852021, 16, 0, 852044, 9, 0, 852045, 9, 0, 852046, 9, 0, 852047, 9, 0, 852048, 9, 0, 852049, 9, 0, 852052, 30, 0, 852053, 20, 0, 852054, 21, 0, 852055, 21, 0, 852056, 22, 0, 852057, 30, 0, 852066, 11, 0, 852068, 29, 0, 852078, 8, 0, 852079, 9, 0, 852080, 9, 0, 852081, 9, 0, 852082, 9, 0, 852083, 9, 0, 852084, 9, 0, 983036, 5, 0, 983037, 28, 0, 983038, 28, 0, 983039, 28, 0, 917504, 28, 0, 917505, 28, 0, 917506, 28, 0, 917507, 28, 0, 917508, 28, 0, 917509, 28, 0, 917510, 28, 0, 917511, 28, 0, 917512, 16, 0, 917523, 30, 0, 917525, 30, 0, 917535, 30, 0, 917540, 29, 0, 917546, 5, 0, 917547, 9, 0, 917548, 9, 0, 917549, 9, 0, 917550, 9, 0, 917551, 9, 0, 917552, 16, 0, 917556, 8, 0, 917557, 10, 0, 917588, 30, 0, 917593, 30, 0, 917614, 8, 0, 917615, 9, 0, 917616, 9, 0, 917617, 9, 0, 917618, 9, 0, 917619, 9, 0, 917620, 9, 0, 1048572, 8, 0, 1048573, 9, 0, 1048574, 536870921, 0, 1048575, 9, 0, 983040, 9, 0, 983041, 9, 0, 983042, 9, 0, 983043, 9, 0, 983044, 9, 0, 983045, 9, 0, 983046, 9, 0, 983047, 9, 0, 983048, 9, 0, 983049, 9, 0, 983050, 9, 0, 983051, 9, 0, 983052, 9, 0, 983053, 9, 0, 983054, 9, 0, 983055, 9, 0, 983056, 9, 0, 983057, 9, 0, 983058, 9, 0, 983059, 30, 0, 983061, 30, 0, 983071, 8, 0, 983072, 28, 0, 983073, 28, 0, 983074, 28, 0, 983075, 28, 0, 983076, 28, 0, 983077, 28, 0, 983078, 28, 0, 983079, 28, 0, 983080, 28, 0, 983081, 28, 0, 983082, 9, 0, 983083, 9, 0, 983084, 9, 0, 983085, 9, 0, 983086, 9, 0, 983087, 9, 0, 983088, 9, 0, 983092, 8, 0, 983093, 10, 0, 983141, 5, 0, 983142, 16, 0, 983150, 8, 0, 983151, 9, 0, 983152, 9, 0, 983153, 9, 0, 983154, 9, 0, 983155, 9, 0, 983156, 9, 0, 983157, 9, 0, 983158, 9, 0, 1114108, 8, 0, 1114109, 9, 0, 1114110, 9, 0, 1114111, 9, 0, 1048576, 9, 0, 1048577, 9, 0, 1048578, 9, 0, 1048579, 9, 0, 1048580, 9, 0, 1048581, 9, 0, 1048582, 9, 0, 1048583, 9, 0, 1048584, 9, 0, 1048585, 9, 0, 1048586, 9, 0, 1048587, 9, 0, 1048588, 9, 0, 1048589, 9, 0, 1048590, 9, 0, 1048591, 9, 0, 1048592, 9, 0, 1048593, 9, 0, 1048594, 9, 0, 1048595, 30, 0, 1048597, 30, 0, 1048600, 7, 0, 1048601, 7, 0, 1048602, 7, 0, 1048603, 7, 0, 1048604, 7, 0, 1048605, 7, 0, 1048607, 8, 0, 1048608, 9, 0, 1048609, 9, 0, 1048610, 9, 0, 1048611, 9, 0, 1048612, 9, 0, 1048613, 9, 0, 1048614, 9, 0, 1048615, 9, 0, 1048616, 9, 0, 1048617, 9, 0, 1048618, 9, 0, 1048619, 9, 0, 1048620, 9, 0, 1048621, 9, 0, 1048622, 9, 0, 1048623, 9, 0, 1048624, 9, 0, 1048677, 11, 0, 1048678, 10, 0, 1048679, 17, 0, 1048680, 29, 0, 1048681, 29, 0, 1048682, 29, 0, 1048683, 29, 0, 1048684, 29, 0, 1048685, 29, 0, 1048686, 8, 0, 1048687, 9, 0, 1048688, 9, 0, 1048689, 9, 0, 1048690, 9, 0, 1048691, 9, 0, 1048692, 9, 0, 1048693, 9, 0, 1114143, 8, 0, 1114144, 9, 0, 1114145, 9, 0, 1114146, 9, 0, 1114147, 9, 0, 1114148, 9, 0, 1114149, 9, 0, 1114150, 9, 0, 1114151, 9, 0, 1114152, 9, 0, 1114153, 9, 0, 1114154, 9, 0, 1114155, 9, 0, 1114156, 9, 0, 1114157, 9, 0, 1114158, 9, 0, 1114159, 9, 0, 1114160, 9, 0, 1114214, 11, 0, 1114215, 12, 0, 1114216, 12, 0, 1114217, 12, 0, 1114218, 12, 0, 1114219, 12, 0, 1114220, 12, 0, 1114221, 12, 0, 2490421, 0, 0 )
+tile_data = PoolIntArray( -130972, 29, 0, -130968, 29, 0, -130964, 29, 0, -65438, 20, 0, -65437, 21, 0, -65436, 21, 0, -65435, 21, 0, -65434, 21, 0, -65433, 21, 0, -65432, 21, 0, -65431, 21, 0, -65430, 21, 0, -65429, 21, 0, -65428, 22, 0, 94, 29, 0, 65630, 8, 0, 65631, 16, 0, 131166, 8, 0, 131167, 9, 0, 131168, 16, 0, 131182, 5, 0, 131183, 16, 0, 131197, 5, 0, 131198, 16, 0, 196699, 23, 0, 196702, 11, 0, 196703, 9, 0, 196704, 9, 0, 196705, 16, 0, 196718, 8, 0, 196719, 10, 0, 196732, 5, 0, 262239, 11, 0, 262240, 9, 0, 262241, 9, 0, 262242, 16, 0, 262254, 8, 0, 262255, 10, 0, 262261, 29, 0, 262267, 5, 0, 327776, 11, 0, 327777, 9, 0, 327778, 10, 0, 327779, 17, 0, 327784, 29, 0, 327790, 8, 0, 327791, 9, 0, 327792, 28, 0, 327793, 28, 0, 327794, 28, 0, 327795, 28, 0, 327796, 28, 0, 327797, 12, 0, 327798, 28, 0, 327799, 28, 0, 327800, 28, 0, 327801, 28, 0, 327802, 28, 0, 393313, 11, 0, 393314, 13, 0, 393315, 19, 0, 393316, 20, 0, 393317, 21, 0, 393318, 21, 0, 393319, 22, 0, 393320, 31, 0, 393321, 23, 0, 393326, 8, 0, 393327, 9, 0, 393328, 9, 0, 393329, 9, 0, 393330, 9, 0, 393331, 9, 0, 393332, 9, 0, 393333, 9, 0, 393334, 9, 0, 393335, 9, 0, 393336, 9, 0, 393337, 9, 0, 458813, 23, 0, 458828, 5, 0, 458829, 28, 0, 458840, 20, 0, 458841, 22, 0, 458862, 8, 0, 458863, 9, 0, 458864, 9, 0, 458865, 9, 0, 458866, 9, 0, 458867, 9, 0, 458868, 9, 0, 458869, 9, 0, 458870, 9, 0, 458871, 9, 0, 458872, 9, 0, 524357, 20, 0, 524358, 21, 0, 524359, 21, 0, 524360, 22, 0, 524364, 8, 0, 524365, 9, 0, 524366, 16, 0, 524373, 23, 0, 524380, 23, 0, 524396, 23, 0, 524398, 8, 0, 524399, 9, 0, 524400, 9, 0, 524401, 9, 0, 524402, 9, 0, 524403, 9, 0, 524404, 9, 0, 524405, 9, 0, 524406, 9, 0, 524407, 9, 0, 524408, 9, 0, 589881, 20, 0, 589882, 22, 0, 589889, 23, 0, 589900, 8, 0, 589901, 9, 0, 589902, 9, 0, 589903, 16, 0, 589934, 8, 0, 589935, 9, 0, 589936, 9, 0, 589937, 9, 0, 589938, 9, 0, 589939, 9, 0, 589940, 9, 0, 589941, 9, 0, 589942, 9, 0, 589943, 9, 0, 589944, 9, 0, 655383, 20, 0, 655384, 21, 0, 655385, 21, 0, 655386, 22, 0, 655436, 8, 0, 655437, 9, 0, 655438, 9, 0, 655439, 9, 0, 655440, 16, 0, 655455, 23, 0, 655466, 29, 0, 655470, 8, 0, 655471, 9, 0, 655472, 9, 0, 655473, 9, 0, 655474, 9, 0, 655475, 9, 0, 655476, 9, 0, 655477, 9, 0, 655478, 9, 0, 655479, 9, 0, 655480, 9, 0, 720924, 23, 0, 720959, 23, 0, 720972, 9, 0, 720973, 9, 0, 720974, 9, 0, 720975, 9, 0, 720976, 9, 0, 720977, 16, 0, 720999, 29, 0, 721002, 31, 0, 721006, 8, 0, 721007, 9, 0, 721008, 9, 0, 721009, 9, 0, 721010, 9, 0, 721011, 9, 0, 721012, 9, 0, 721013, 9, 0, 721014, 9, 0, 721015, 9, 0, 786453, 29, 0, 786463, 29, 0, 786476, 5, 0, 786477, 28, 0, 786478, 16, 0, 786488, 20, 0, 786489, 21, 0, 786490, 21, 0, 786491, 22, 0, 786508, 9, 0, 786509, 9, 0, 786510, 9, 0, 786511, 9, 0, 786512, 9, 0, 786513, 9, 0, 786516, 29, 0, 786521, 29, 0, 786524, 20, 0, 786525, 22, 0, 786530, 20, 0, 786531, 22, 0, 786535, 31, 0, 786542, 8, 0, 786543, 9, 0, 786544, 9, 0, 786545, 9, 0, 786546, 9, 0, 786547, 9, 0, 786548, 9, 0, 786549, 9, 0, 851973, 32, 0, 851987, 29, 0, 851989, 30, 0, 851999, 30, 0, 852011, 5, 0, 852012, 9, 0, 852013, 9, 0, 852014, 9, 0, 852015, 16, 0, 852020, 5, 0, 852021, 16, 0, 852044, 9, 0, 852045, 9, 0, 852046, 9, 0, 852047, 9, 0, 852048, 9, 0, 852049, 9, 0, 852052, 30, 0, 852053, 20, 0, 852054, 21, 0, 852055, 21, 0, 852056, 22, 0, 852057, 30, 0, 852068, 29, 0, 852078, 8, 0, 852079, 9, 0, 852080, 9, 0, 852081, 9, 0, 852082, 9, 0, 852083, 9, 0, 852084, 9, 0, 983036, 5, 0, 983037, 28, 0, 983038, 28, 0, 983039, 28, 0, 917504, 28, 0, 917505, 28, 0, 917506, 28, 0, 917507, 28, 0, 917508, 28, 0, 917509, 28, 0, 917510, 28, 0, 917511, 28, 0, 917512, 16, 0, 917523, 30, 0, 917525, 30, 0, 917535, 30, 0, 917540, 29, 0, 917546, 5, 0, 917547, 9, 0, 917548, 9, 0, 917549, 9, 0, 917550, 9, 0, 917551, 9, 0, 917552, 16, 0, 917556, 8, 0, 917557, 10, 0, 917588, 30, 0, 917593, 30, 0, 917604, 30, 0, 917614, 8, 0, 917615, 9, 0, 917616, 9, 0, 917617, 9, 0, 917618, 9, 0, 917619, 9, 0, 917620, 9, 0, 1048572, 8, 0, 1048573, 9, 0, 1048574, 536870921, 0, 1048575, 9, 0, 983040, 9, 0, 983041, 9, 0, 983042, 9, 0, 983043, 9, 0, 983044, 9, 0, 983045, 9, 0, 983046, 9, 0, 983047, 9, 0, 983048, 9, 0, 983049, 9, 0, 983050, 9, 0, 983051, 9, 0, 983052, 9, 0, 983053, 9, 0, 983054, 9, 0, 983055, 9, 0, 983056, 9, 0, 983057, 9, 0, 983058, 9, 0, 983059, 30, 0, 983061, 30, 0, 983071, 8, 0, 983072, 28, 0, 983073, 28, 0, 983074, 28, 0, 983075, 28, 0, 983076, 28, 0, 983077, 28, 0, 983078, 28, 0, 983079, 28, 0, 983080, 28, 0, 983081, 28, 0, 983082, 9, 0, 983083, 9, 0, 983084, 9, 0, 983085, 9, 0, 983086, 9, 0, 983087, 9, 0, 983088, 10, 0, 983092, 8, 0, 983093, 10, 0, 983124, 11, 0, 983125, 12, 0, 983126, 12, 0, 983127, 12, 0, 983128, 12, 0, 983129, 13, 0, 983140, 30, 0, 983141, 5, 0, 983142, 16, 0, 983150, 8, 0, 983151, 9, 0, 983152, 9, 0, 983153, 9, 0, 983154, 9, 0, 983155, 9, 0, 983156, 9, 0, 983157, 9, 0, 983158, 9, 0, 1114108, 8, 0, 1114109, 9, 0, 1114110, 9, 0, 1114111, 9, 0, 1048576, 9, 0, 1048577, 9, 0, 1048578, 9, 0, 1048579, 9, 0, 1048580, 9, 0, 1048581, 9, 0, 1048582, 9, 0, 1048583, 9, 0, 1048584, 9, 0, 1048585, 9, 0, 1048586, 9, 0, 1048587, 9, 0, 1048588, 9, 0, 1048589, 9, 0, 1048590, 9, 0, 1048591, 9, 0, 1048592, 9, 0, 1048593, 9, 0, 1048594, 9, 0, 1048595, 30, 0, 1048597, 30, 0, 1048607, 8, 0, 1048608, 9, 0, 1048609, 9, 0, 1048610, 9, 0, 1048611, 9, 0, 1048612, 9, 0, 1048613, 9, 0, 1048614, 9, 0, 1048615, 9, 0, 1048616, 9, 0, 1048617, 9, 0, 1048618, 9, 0, 1048619, 9, 0, 1048620, 9, 0, 1048621, 9, 0, 1048622, 9, 0, 1048623, 9, 0, 1048624, 10, 0, 1048628, 8, 0, 1048629, 10, 0, 1048676, 30, 0, 1048677, 8, 0, 1048678, 10, 0, 1048679, 17, 0, 1048680, 29, 0, 1048681, 29, 0, 1048682, 29, 0, 1048683, 29, 0, 1048684, 29, 0, 1048685, 29, 0, 1048686, 8, 0, 1048687, 9, 0, 1048688, 9, 0, 1048689, 9, 0, 1048690, 9, 0, 1048691, 9, 0, 1048692, 9, 0, 1048693, 9, 0, 1179644, 9, 0, 1179645, 9, 0, 1179646, 9, 0, 1179647, 9, 0, 1114112, 9, 0, 1114113, 9, 0, 1114114, 9, 0, 1114115, 9, 0, 1114116, 9, 0, 1114117, 9, 0, 1114118, 9, 0, 1114119, 9, 0, 1114120, 9, 0, 1114121, 9, 0, 1114122, 9, 0, 1114123, 9, 0, 1114124, 9, 0, 1114125, 9, 0, 1114126, 9, 0, 1114127, 9, 0, 1114128, 9, 0, 1114129, 9, 0, 1114130, 9, 0, 1114131, 30, 0, 1114133, 30, 0, 1114143, 8, 0, 1114144, 9, 0, 1114145, 9, 0, 1114146, 9, 0, 1114147, 9, 0, 1114148, 9, 0, 1114149, 9, 0, 1114150, 9, 0, 1114151, 9, 0, 1114152, 9, 0, 1114153, 9, 0, 1114154, 9, 0, 1114155, 9, 0, 1114156, 9, 0, 1114157, 9, 0, 1114158, 9, 0, 1114159, 9, 0, 1114160, 10, 0, 1114164, 8, 0, 1114165, 10, 0, 1114212, 31, 0, 1114213, 11, 0, 1114214, 12, 0, 1114215, 12, 0, 1114216, 12, 0, 1114217, 12, 0, 1114218, 12, 0, 1114219, 12, 0, 1114220, 12, 0, 1114221, 12, 0, 1245180, 9, 0, 1245181, 9, 0, 1245182, 9, 0, 1245183, 9, 0, 1179648, 9, 0, 1179649, 9, 0, 1179650, 9, 0, 1179651, 9, 0, 1179652, 9, 0, 1179653, 9, 0, 1179654, 9, 0, 1179655, 9, 0, 1179656, 9, 0, 1179657, 9, 0, 1179658, 9, 0, 1179659, 9, 0, 1179660, 9, 0, 1179661, 9, 0, 1179662, 9, 0, 1179663, 9, 0, 1179664, 9, 0, 1179665, 9, 0, 1179666, 9, 0, 1179679, 9, 0, 1179680, 9, 0, 1179681, 9, 0, 1179682, 9, 0, 1179683, 9, 0, 1179684, 9, 0, 1179685, 9, 0, 1179686, 9, 0, 1179687, 9, 0, 1179688, 9, 0, 1179689, 9, 0, 1179690, 9, 0, 1179691, 9, 0, 1179692, 9, 0, 1179693, 9, 0, 1179694, 9, 0, 1179695, 9, 0, 1179696, 10, 0, 1179700, 8, 0, 1179701, 10, 0, 1245236, 8, 0, 1245237, 10, 0, 2490421, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 160, 376 )
@@ -737,7 +760,15 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 1
+frame = 0
+
+[node name="WaterTile" type="TileMap" parent="."]
+position = Vector2( -40, 88 )
+scale = Vector2( 1.5, 1.5 )
+tile_set = SubResource( 29 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -196490, 0, 0, -196489, 0, 0, -196488, 0, 0, -196487, 0, 0, -196486, 0, 0, -196485, 0, 0, 393298, 0, 0, 393299, 0, 0, 393300, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 0, 0, 458769, 0, 0, 458770, 0, 0, 458771, 0, 0, 458772, 0, 0, 458773, 0, 0, 458774, 0, 0, 458775, 0, 0, 458776, 0, 0, 458777, 0, 0, 458778, 0, 0, 458779, 0, 0, 458780, 0, 0, 458781, 0, 0, 458782, 0, 0, 458783, 0, 0, 458801, 0, 0, 458802, 0, 0, 458803, 0, 0, 458804, 0, 0, 458806, 0, 0, 458807, 0, 0, 458808, 0, 0, 458809, 0, 0, 458810, 0, 0, 458811, 0, 0, 458812, 0, 0, 458813, 0, 0, 458814, 0, 0, 458815, 0, 0, 458816, 0, 0, 458817, 0, 0, 458818, 0, 0, 458819, 0, 0, 458820, 0, 0, 458821, 0, 0, 458822, 0, 0, 458823, 0, 0, 458824, 0, 0, 458825, 0, 0, 458826, 0, 0, 458827, 0, 0, 458828, 0, 0, 458829, 0, 0, 458830, 0, 0, 458831, 0, 0, 458832, 0, 0, 458833, 0, 0, 458834, 0, 0, 458835, 1, 0, 458836, 1, 0, 458837, 0, 0, 458838, 0, 0, 458839, 0, 0, 458840, 0, 0, 458841, 0, 0, 458842, 0, 0, 458843, 0, 0, 458844, 0, 0, 458845, 0, 0, 458846, 0, 0, 458847, 0, 0, 458848, 0, 0, 458849, 0, 0, 458850, 0, 0, 458851, 0, 0, 458852, 0, 0, 524308, 1, 0, 524309, 1, 0, 524310, 1, 0, 524311, 1, 0, 524312, 1, 0, 524313, 1, 0, 524314, 1, 0, 524315, 1, 0, 524316, 1, 0, 524317, 1, 0, 524318, 1, 0, 524319, 1, 0, 524337, 1, 0, 524338, 1, 0, 524339, 1, 0, 524340, 1, 0, 524342, 1, 0, 524343, 1, 0, 524344, 1, 0, 524345, 1, 0, 524346, 1, 0, 524347, 1, 0, 524348, 1, 0, 524349, 1, 0, 524350, 1, 0, 524351, 1, 0, 524352, 1, 0, 524353, 1, 0, 524354, 1, 0, 524355, 1, 0, 524356, 1, 0, 524357, 1, 0, 524358, 1, 0, 524359, 1, 0, 524360, 1, 0, 524361, 1, 0, 524362, 1, 0, 524363, 1, 0, 524364, 1, 0, 524365, 1, 0, 524366, 1, 0, 524367, 1, 0, 524368, 1, 0, 524369, 1, 0, 524370, 1, 0, 524371, 1, 0, 524372, 1, 0, 524373, 1, 0, 524374, 1, 0, 524375, 1, 0, 524376, 1, 0, 524377, 1, 0, 524378, 1, 0, 524379, 1, 0, 524380, 1, 0, 524381, 1, 0, 524382, 1, 0, 524383, 1, 0, 524384, 1, 0, 524385, 1, 0, 524386, 1, 0, 524387, 1, 0, 524388, 1, 0, 524391, 0, 0, 524392, 0, 0, 524393, 0, 0, 524394, 0, 0, 524395, 0, 0, 524396, 0, 0, 524397, 0, 0, 524398, 0, 0, 589844, 1, 0, 589845, 1, 0, 589846, 1, 0, 589847, 1, 0, 589848, 1, 0, 589849, 1, 0, 589850, 1, 0, 589851, 1, 0, 589852, 1, 0, 589853, 1, 0, 589854, 1, 0, 589855, 1, 0, 589873, 1, 0, 589874, 1, 0, 589875, 1, 0, 589876, 1, 0, 589877, 1, 0, 589878, 1, 0, 589879, 1, 0, 589880, 1, 0, 589881, 1, 0, 589882, 1, 0, 589883, 1, 0, 589884, 1, 0, 589885, 1, 0, 589886, 1, 0, 589887, 1, 0, 589888, 1, 0, 589889, 1, 0, 589890, 1, 0, 589891, 1, 0, 589892, 1, 0, 589893, 1, 0, 589894, 1, 0, 589895, 1, 0, 589896, 1, 0, 589897, 1, 0, 589898, 1, 0, 589899, 1, 0, 589900, 1, 0, 589901, 1, 0, 589902, 1, 0, 589903, 1, 0, 589904, 1, 0, 589905, 1, 0, 589906, 1, 0, 589907, 1, 0, 589908, 1, 0, 589909, 1, 0, 589910, 1, 0, 589911, 1, 0, 589912, 1, 0, 589913, 1, 0, 589914, 1, 0, 589915, 1, 0, 589916, 1, 0, 589917, 1, 0, 589918, 1, 0, 589919, 1, 0, 589920, 1, 0, 589921, 1, 0, 589922, 1, 0, 589923, 1, 0, 589924, 1, 0, 589927, 1, 0, 589928, 1, 0, 589929, 1, 0, 589930, 1, 0, 589931, 1, 0, 589932, 1, 0, 589933, 1, 0, 589934, 1, 0, 655370, 1, 0, 655371, 1, 0, 655372, 1, 0, 655373, 1, 0, 655374, 1, 0, 655375, 1, 0, 655376, 1, 0, 655377, 1, 0, 655378, 1, 0, 655379, 1, 0, 655380, 1, 0, 655381, 1, 0, 655382, 1, 0, 655383, 1, 0, 655384, 1, 0, 655385, 1, 0, 655386, 1, 0, 655387, 1, 0, 655388, 1, 0, 655389, 1, 0, 655390, 1, 0, 655391, 1, 0, 655409, 1, 0, 655410, 1, 0, 655411, 1, 0, 655412, 1, 0, 655413, 1, 0, 655414, 1, 0, 655415, 1, 0, 655416, 1, 0, 655417, 1, 0, 655418, 1, 0, 655419, 1, 0, 655420, 1, 0, 655421, 1, 0, 655422, 1, 0, 655423, 1, 0, 655424, 1, 0, 655425, 1, 0, 655426, 1, 0, 655427, 1, 0, 655428, 1, 0, 655429, 1, 0, 655430, 1, 0, 655431, 1, 0, 655432, 1, 0, 655433, 1, 0, 655434, 1, 0, 655435, 1, 0, 655436, 1, 0, 655437, 1, 0, 655438, 1, 0, 655439, 1, 0, 655440, 1, 0, 655441, 1, 0, 655442, 1, 0, 655443, 1, 0, 655444, 1, 0, 655445, 1, 0, 655446, 1, 0, 655447, 1, 0, 655448, 1, 0, 655449, 1, 0, 655450, 1, 0, 655451, 1, 0, 655452, 1, 0, 655453, 1, 0, 655454, 1, 0, 655455, 1, 0, 655456, 1, 0, 655457, 1, 0, 655458, 1, 0, 655459, 1, 0, 655460, 1, 0 )
 
 [node name="GUI" type="Control" parent="." groups=["GUI"]]
 margin_right = 40.0
@@ -794,407 +825,56 @@ stretch_mode = 4
 
 [node name="Node2D" type="Node2D" parent="."]
 
-[node name="Water4" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 744, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water6" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 2376, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water20" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 2328, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water21" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 2616, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water22" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 2568, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water23" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 2664, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water24" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 2712, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water25" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 2760, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water26" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 2808, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water27" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 2856, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water28" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 2904, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water29" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 2952, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water30" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 3000, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water31" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 3048, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water40" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 3096, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water41" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 3144, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water42" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 3192, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water43" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 3240, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water44" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 3288, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water45" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 3336, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water46" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 3384, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water47" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 3432, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water48" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 3480, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water49" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 3528, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water50" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 3576, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water51" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 3624, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water52" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 3672, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water53" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 3720, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water54" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 4968, 504 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water55" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5016, 504 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water56" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5064, 504 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water57" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5112, 504 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water58" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5160, 504 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water59" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5208, 504 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water60" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 4968, 552 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water62" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5016, 552 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water63" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5064, 552 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water64" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5112, 552 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water65" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5160, 552 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water66" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5208, 552 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water67" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5256, 552 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water61" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5256, 504 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water68" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5400, -32 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water69" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5448, -32 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water70" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5496, -32 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water71" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5544, -32 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water72" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5592, -32 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water73" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5640, -32 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water74" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5688, -32 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water75" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5736, -32 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water76" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5784, -32 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water77" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5832, -32 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water78" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5880, -32 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water79" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 5928, -32 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water17" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 2424, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water18" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 2472, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water19" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 2520, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water10" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 696, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water11" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 648, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water12" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 600, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water13" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 552, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water14" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 504, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water15" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 456, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water16" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 408, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water5" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 1080, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water32" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 1128, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water33" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 1176, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water34" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 1224, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water35" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 1272, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water36" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 1320, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water37" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 1368, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water38" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 1416, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water39" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 1464, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water8" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 984, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water9" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 1032, 448 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Water7" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 936, 448 )
-scale = Vector2( 1.5, 1.5 )
-
 [node name="Water" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 792, 448 )
-scale = Vector2( 1.5, 1.5 )
+position = Vector2( 792, 488 )
+
+[node name="CollisionShape2D" parent="Node2D/Water" index="0"]
+position = Vector2( 165.333, 1.5 )
 
 [node name="Water2" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 840, 448 )
-scale = Vector2( 1.5, 1.5 )
+position = Vector2( 2872, 488 )
+script = SubResource( 30 )
+
+[node name="CollisionShape2D" parent="Node2D/Water2" index="0"]
+position = Vector2( 126.667, 1.5 )
+shape = SubResource( 31 )
 
 [node name="Water3" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.529412 )
-position = Vector2( 888, 448 )
-scale = Vector2( 1.5, 1.5 )
+position = Vector2( 3984, 440 )
+scale = Vector2( 0.4, 1 )
+script = SubResource( 32 )
 
-[node name="Rune_Health" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1032, 288 )
+[node name="CollisionShape2D" parent="Node2D/Water3" index="0"]
+shape = SubResource( 33 )
+
+[node name="Water4" parent="Node2D" instance=ExtResource( 5 )]
+position = Vector2( 5056, 544 )
+scale = Vector2( 0.4, 1 )
+script = SubResource( 32 )
+
+[node name="CollisionShape2D" parent="Node2D/Water4" index="0"]
+position = Vector2( 140, -8 )
+scale = Vector2( 2.5, 1 )
+shape = SubResource( 33 )
+
+[node name="Water5" parent="Node2D" instance=ExtResource( 5 )]
+position = Vector2( 4509, 495 )
+scale = Vector2( 0.4, 1 )
+script = SubResource( 32 )
+
+[node name="CollisionShape2D" parent="Node2D/Water5" index="0"]
+position = Vector2( 140, -8 )
+scale = Vector2( 3.5, 1 )
+shape = SubResource( 33 )
+
+[node name="RuneHealth" type="Node2D" parent="."]
+position = Vector2( 5064, 16 )
+
+[node name="Rune_Health" parent="RuneHealth" groups=["Rune_Health"] instance=ExtResource( 6 )]
+position = Vector2( -4032, 272 )
 script = ExtResource( 7 )
 
-[node name="Rune_Health2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 5064, 16 )
+[node name="Rune_Health2" parent="RuneHealth" groups=["Rune_Health"] instance=ExtResource( 6 )]
 script = ExtResource( 7 )
 
 [node name="GoldChest" type="Node2D" parent="."]
@@ -1232,36 +912,21 @@ z_index = -2
 position = Vector2( 1640, 450 )
 scale = Vector2( 1.5, 1.5 )
 
-[node name="AnimatedSprite" parent="Enemy" index="0"]
-frame = 0
-
 [node name="Enemy2" parent="." instance=ExtResource( 12 )]
 position = Vector2( 4104, 352 )
 scale = Vector2( 1.5, 1.5 )
-
-[node name="AnimatedSprite" parent="Enemy2" index="0"]
-frame = 0
 
 [node name="Enemy3" parent="." instance=ExtResource( 12 )]
 position = Vector2( 4832, 16 )
 scale = Vector2( 1.5, 1.5 )
 
-[node name="AnimatedSprite" parent="Enemy3" index="0"]
-frame = 0
-
 [node name="Enemy4" parent="." instance=ExtResource( 12 )]
 position = Vector2( 4880, -320 )
 scale = Vector2( 1.5, 1.5 )
 
-[node name="AnimatedSprite" parent="Enemy4" index="0"]
-frame = 0
-
 [node name="Enemy5" parent="." instance=ExtResource( 12 )]
 position = Vector2( 5152, -320 )
 scale = Vector2( 1.5, 1.5 )
-
-[node name="AnimatedSprite" parent="Enemy5" index="0"]
-frame = 0
 
 [node name="Monolith" parent="." instance=ExtResource( 14 )]
 position = Vector2( 1896, 424 )
@@ -1272,6 +937,11 @@ script = ExtResource( 15 )
 [node name="ExitCave" parent="." instance=ExtResource( 16 )]
 position = Vector2( 3736, -360 )
 scale = Vector2( 1.5, 1.5 )
+
+[node name="EntryCave" parent="." instance=ExtResource( 20 )]
+position = Vector2( -143, 352 )
+scale = Vector2( 1.5, 1.5 )
+z_index = -1
 
 [connection signal="coin_collected" from="Player" to="GUI/StatusGUI" method="_on_Player_coin_collected"]
 [connection signal="enemy_detected" from="Player" to="Player" method="_on_Player_enemy_detected"]
@@ -1287,6 +957,11 @@ scale = Vector2( 1.5, 1.5 )
 
 [editable path="Player"]
 [editable path="GUI/StatusGUI"]
+[editable path="Node2D/Water"]
+[editable path="Node2D/Water2"]
+[editable path="Node2D/Water3"]
+[editable path="Node2D/Water4"]
+[editable path="Node2D/Water5"]
 [editable path="Enemy"]
 [editable path="Enemy2"]
 [editable path="Enemy3"]

@@ -18,6 +18,7 @@ var count = 0
 onready var player: KinematicBody2D = $"."
 onready var status_gui = $"../GUI/StatusGUI"
 onready var hurt_box: Area2D = $HurtBox
+onready var camera_2d: Camera2D = $Camera2D
 
 
 func _physics_process(delta):
@@ -93,6 +94,7 @@ func _on_HurtBox_area_entered(area):
 		velocity.y += -100
 		velocity.x += -1000
 		velocity = move_and_slide(velocity, Vector2.UP)
+		camera_2d.shake()
 		emit_signal("enemy_detected")
 		enemy_collision_setter_false(area)
 	if area.name == "Monolith":
