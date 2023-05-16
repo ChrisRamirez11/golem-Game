@@ -759,13 +759,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( 18, -70 )
-current = true
-limit_left = 18
-limit_top = -10000
-smoothing_enabled = true
-smoothing_speed = 6.0
+[node name="AnimatedSprite" parent="Player" index="0"]
+frame = 1
 
 [node name="WaterTile" type="TileMap" parent="."]
 position = Vector2( -40, 88 )
@@ -862,6 +857,16 @@ position = Vector2( 140, -8 )
 scale = Vector2( 2.5, 1 )
 shape = SubResource( 33 )
 
+[node name="Water5" parent="Node2D" instance=ExtResource( 5 )]
+position = Vector2( 4509, 495 )
+scale = Vector2( 0.4, 1 )
+script = SubResource( 32 )
+
+[node name="CollisionShape2D" parent="Node2D/Water5" index="0"]
+position = Vector2( 140, -8 )
+scale = Vector2( 3.5, 1 )
+shape = SubResource( 33 )
+
 [node name="RuneHealth" type="Node2D" parent="."]
 position = Vector2( 5064, 16 )
 
@@ -907,36 +912,21 @@ z_index = -2
 position = Vector2( 1640, 450 )
 scale = Vector2( 1.5, 1.5 )
 
-[node name="AnimatedSprite" parent="Enemy" index="0"]
-frame = 0
-
 [node name="Enemy2" parent="." instance=ExtResource( 12 )]
 position = Vector2( 4104, 352 )
 scale = Vector2( 1.5, 1.5 )
-
-[node name="AnimatedSprite" parent="Enemy2" index="0"]
-frame = 0
 
 [node name="Enemy3" parent="." instance=ExtResource( 12 )]
 position = Vector2( 4832, 16 )
 scale = Vector2( 1.5, 1.5 )
 
-[node name="AnimatedSprite" parent="Enemy3" index="0"]
-frame = 0
-
 [node name="Enemy4" parent="." instance=ExtResource( 12 )]
 position = Vector2( 4880, -320 )
 scale = Vector2( 1.5, 1.5 )
 
-[node name="AnimatedSprite" parent="Enemy4" index="0"]
-frame = 0
-
 [node name="Enemy5" parent="." instance=ExtResource( 12 )]
 position = Vector2( 5152, -320 )
 scale = Vector2( 1.5, 1.5 )
-
-[node name="AnimatedSprite" parent="Enemy5" index="0"]
-frame = 0
 
 [node name="Monolith" parent="." instance=ExtResource( 14 )]
 position = Vector2( 1896, 424 )
@@ -971,6 +961,7 @@ z_index = -1
 [editable path="Node2D/Water2"]
 [editable path="Node2D/Water3"]
 [editable path="Node2D/Water4"]
+[editable path="Node2D/Water5"]
 [editable path="Enemy"]
 [editable path="Enemy2"]
 [editable path="Enemy3"]
