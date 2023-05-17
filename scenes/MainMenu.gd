@@ -11,6 +11,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 
+
 func _on_StartButton_pressed():
 	focus_sound.play()
 	timer.start(0.3)
@@ -27,7 +28,6 @@ func _on_StartButton_focus_exited() -> void:
 
 func _on_QuitButton_focus_exited() -> void:
 	focus_sound.play()
-
 
 
 func _on_Timer_timeout() -> void:
