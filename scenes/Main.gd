@@ -10,7 +10,6 @@ func _ready() -> void:
 
 func _process(delta):
 	_on_PauseButton_pressed()
-	
 
 
 func _on_PauseButton_pressed():

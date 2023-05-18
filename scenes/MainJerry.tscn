@@ -760,7 +760,7 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 2
+frame = 3
 
 [node name="WaterTile" type="TileMap" parent="."]
 position = Vector2( -40, 88 )
