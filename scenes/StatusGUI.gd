@@ -20,3 +20,8 @@ func _on_Timer_timeout() -> void:
 func _on_Player_coin_collected() -> void:
 	count+=1
 	label.set_text(String (count))
+
+
+func _on_Player_rune_speed() -> void:
+	sprite.texture = load("res://assets/gui/status_water.png")
+	timer.start(2)
