@@ -52,6 +52,7 @@ outline_color = Color( 0.105882, 0.105882, 0.105882, 1 )
 font_data = ExtResource( 3 )
 
 [node name="PauseMenu" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -73,7 +74,6 @@ margin_bottom = 40.0
 alignment = 1
 
 [node name="Continue" type="Button" parent="ColorRect/VBoxContainer"]
-pause_mode = 2
 margin_right = 108.0
 margin_bottom = 38.0
 focus_neighbour_top = NodePath("../Quit")
@@ -88,7 +88,6 @@ clip_text = true
 icon_align = 1
 
 [node name="Quit" type="Button" parent="ColorRect/VBoxContainer"]
-pause_mode = 2
 margin_top = 42.0
 margin_right = 108.0
 margin_bottom = 80.0
