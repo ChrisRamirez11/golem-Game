@@ -10,7 +10,8 @@ onready var player: KinematicBody2D = $"../Player"
 onready var animated_sprite: AnimatedSprite = $AnimatedSprite
 onready var area_2d: Area2D = $Area2D
 onready var enemy_area: Area2D = $EnemyArea
-
+#sound
+onready var walking: AudioStreamPlayer2D = $Walking
 
 func _ready() -> void:
 	velocity.x = -speed
@@ -18,7 +19,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
-	
+	if velocity.x != 0:
+		walking.play()
 	
 	if is_on_wall():
 		if $AnimatedSprite.flip_h == true:

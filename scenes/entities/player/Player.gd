@@ -17,6 +17,7 @@ var max_health = 100
 var count = 0
 var color := Color(1,0,0,0.6)
 var default_modulate = modulate
+var jumping:bool = false
 
 
 onready var player: KinematicBody2D = $"."
@@ -26,6 +27,9 @@ onready var camera_2d: Camera2D = $Camera2D
 onready var tween_hurt: Tween = $TweenHurt
 
 onready var walk_sound: AudioStreamPlayer2D = $Node2D/walk_sound
+onready var hurt_sound: AudioStreamPlayer2D = $Node2D/Hurt_Sound
+onready var grounded: AudioStreamPlayer2D = $Node2D/Grounded
+onready var water_sound: AudioStreamPlayer2D = $Node2D/water_sound
 
 
 func _physics_process(delta):
@@ -36,8 +40,9 @@ func _physics_process(delta):
 	if is_jumping and is_on_floor():
 		is_jumping = true
 	else: is_jumping = false
-
+	
 	velocity = move_and_slide(velocity, Vector2.UP)
+	
 	
 	_sounds()
 	get_coin()
@@ -54,9 +59,7 @@ func get_input():
 		$AnimatedSprite.flip_h = false
 	if Input.is_action_just_pressed("ui_up") and is_on_floor():
 		is_jumping = true
-
 		velocity.y = jump_force
-
 
 func process_animations():
 	if velocity.length() != 0:
@@ -73,6 +76,7 @@ func is_on_water():
 	for area in areas:
 		if area.is_in_group("Damagers"):
 			damage_ctrl(area.damage)
+			water_sound.play()
 
 
 func get_coin():
@@ -85,6 +89,8 @@ func get_coin():
 
 
 func damage_ctrl(damage):
+	tween_hurt()
+	hurt_sound.play()
 	if health > 0:
 		health -= damage
 	else:
@@ -125,11 +131,14 @@ func enemy_collision_setter_false(area):
 
 
 func tween_hurt():
-	tween_hurt.interpolate_property(self, "modulate", color, default_modulate, 0.8, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+	tween_hurt.interpolate_property(self,
+	 "modulate",
+	 color,
+	 default_modulate,
+	 0.6,
+	 Tween.TRANS_ELASTIC,
+	 Tween.EASE_IN_OUT)
 	tween_hurt.start()
-
-
-
 
 
 func _on_Player_rune_speed() -> void:
@@ -141,3 +150,10 @@ func _on_Player_rune_speed() -> void:
 func _sounds():
 	if velocity.x != 0:
 		walk_sound.play()
+	
+	if velocity.y>0:
+		jumping = true
+	if jumping and is_on_floor():
+		grounded.play()
+		jumping=false
+
