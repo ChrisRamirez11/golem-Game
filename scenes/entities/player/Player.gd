@@ -25,11 +25,12 @@ onready var status_gui = $"../GUI/StatusGUI"
 onready var hurt_box: Area2D = $HurtBox
 onready var camera_2d: Camera2D = $Camera2D
 onready var tween_hurt: Tween = $TweenHurt
-
+#sounds
 onready var walk_sound: AudioStreamPlayer2D = $Node2D/walk_sound
 onready var hurt_sound: AudioStreamPlayer2D = $Node2D/Hurt_Sound
 onready var grounded: AudioStreamPlayer2D = $Node2D/Grounded
 onready var water_sound: AudioStreamPlayer2D = $Node2D/water_sound
+onready var rune_collected: AudioStreamPlayer2D = $Node2D/rune_collected
 
 
 func _physics_process(delta):
@@ -99,6 +100,7 @@ func damage_ctrl(damage):
 
 func _on_HurtBox_area_entered(area):
 	if area.is_in_group("Rune_Health"):
+		rune_collected.play()
 		emit_signal("rune_collected")
 		health += 30
 		area.delete()
@@ -117,6 +119,7 @@ func _on_HurtBox_area_entered(area):
 			emit_signal("monolith_activation")
 	if area.is_in_group("Speeders"):
 		area.queue_free()
+		rune_collected.play()
 		emit_signal("rune_speed")
 
 
