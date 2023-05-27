@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://assets/alchemist/alchemist_idle.png" type="Texture" id=2]
+[ext_resource path="res://Alchemist.gd" type="Script" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 32, 48 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 16, 24 )
+
+[node name="Alchemist" type="Area2D"]
+scale = Vector2( 2, 2 )
+collision_layer = 64
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 4 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Tween" type="Tween" parent="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="Node2D"]
+visible = false
+modulate = Color( 0.996078, 1, 1, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 58.625, -54.625 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Node2D/Sprite"]
+margin_left = -30.0
+margin_top = -18.0
+margin_right = 26.0
+margin_bottom = 13.0
+text = "Hola 
+Puberto"
+
+[connection signal="area_entered" from="." to="." method="_on_Alchemist_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_Alchemist_area_exited"]

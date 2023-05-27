@@ -9,17 +9,6 @@ signal monolith_activation
 export (int) var gravity = 1600
 export (int) var jump_force = -600
 
-var velocity = Vector2.ZERO
-var speed = 250
-var is_jumping = false
-var health =  100
-var max_health = 100
-var count = 0
-var color := Color(1,0,0,0.6)
-var default_modulate = modulate
-var jumping:bool = false
-
-
 onready var player: KinematicBody2D = $"."
 onready var status_gui = $"../GUI/StatusGUI"
 onready var hurt_box: Area2D = $HurtBox
@@ -31,10 +20,22 @@ onready var hurt_sound: AudioStreamPlayer2D = $Node2D/Hurt_Sound
 onready var grounded: AudioStreamPlayer2D = $Node2D/Grounded
 onready var water_sound: AudioStreamPlayer2D = $Node2D/water_sound
 onready var rune_collected: AudioStreamPlayer2D = $Node2D/rune_collected
+onready var gold_collected: AudioStreamPlayer2D = $Node2D/gold_collected
+
+onready var pitch_vel := walk_sound.get_pitch_scale()
+
+var velocity = Vector2.ZERO
+var speed = 250
+var is_jumping = false
+var health =  100
+var max_health = 100
+var count = 0
+var color := Color(1,0,0,0.6)
+var default_modulate = modulate
+var jumping:bool = false
 
 
 func _physics_process(delta):
-
 	get_input()
 	process_animations()
 	velocity.y += gravity * delta
@@ -87,6 +88,7 @@ func get_coin():
 			count +=1
 			area.delete()
 			emit_signal("coin_collected")
+			gold_collected.play()
 
 
 func damage_ctrl(damage):
@@ -146,12 +148,14 @@ func tween_hurt():
 
 func _on_Player_rune_speed() -> void:
 	speed = 500
+	walk_sound.set_pitch_scale(pitch_vel*2)
 	yield(get_tree().create_timer(2), "timeout")
 	self.speed = 250
+	walk_sound.set_pitch_scale(pitch_vel)
 
 
 func _sounds():
-	if velocity.x != 0:
+	if velocity.x != 0 and !walk_sound.is_playing() and is_on_floor():
 		walk_sound.play()
 	
 	if velocity.y>0:
@@ -160,3 +164,7 @@ func _sounds():
 		grounded.play()
 		jumping=false
 
+
+
+func _on_walk_sound_finished() -> void:
+	walk_sound.stop()

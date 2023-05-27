@@ -23,5 +23,5 @@ func _on_Player_coin_collected() -> void:
 
 
 func _on_Player_rune_speed() -> void:
-	sprite.texture = load("res://assets/gui/status_water.png")
+	sprite.texture = load("res://assets/gui/status_speedt.png")
 	timer.start(2)

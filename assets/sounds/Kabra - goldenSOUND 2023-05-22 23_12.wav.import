@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Kabra - goldenSOUND 2023-05-22 23_12.wav-3ac19effb320d7838b68f5e38a475ea2.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Kabra - goldenSOUND 2023-05-22 23_12.wav"
+dest_files=[ "res://.import/Kabra - goldenSOUND 2023-05-22 23_12.wav-3ac19effb320d7838b68f5e38a475ea2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

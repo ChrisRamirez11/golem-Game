@@ -11,6 +11,7 @@ func _ready() -> void:
 	timer()
 	tween.interpolate_property(sprite, "modulate", default_color, color,  2,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
+	OS.center_window()
 
 
 func timer():

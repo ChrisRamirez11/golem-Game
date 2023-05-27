@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/walkSoundGolem~1.mp3-6507602c6ecf0126ae4ccf1176dc34da.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/walkSoundGolem~1.mp3"
+dest_files=[ "res://.import/walkSoundGolem~1.mp3-6507602c6ecf0126ae4ccf1176dc34da.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
