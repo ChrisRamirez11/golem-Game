@@ -762,7 +762,7 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 1
+frame = 2
 
 [node name="WaterTile" type="TileMap" parent="."]
 position = Vector2( -40, 88 )
@@ -949,13 +949,13 @@ scale = Vector2( 1.5, 1.5 )
 frame = 0
 
 [node name="Monolith" parent="." instance=ExtResource( 14 )]
-position = Vector2( 1896, 424 )
+position = Vector2( 5472, -56 )
 scale = Vector2( 1.5, 1.5 )
 z_index = -1
 script = ExtResource( 15 )
 
 [node name="ExitCave" parent="." instance=ExtResource( 16 )]
-position = Vector2( 3736, -360 )
+position = Vector2( 6056, -216 )
 scale = Vector2( 1.5, 1.5 )
 
 [node name="EntryCave" parent="." instance=ExtResource( 20 )]
@@ -969,11 +969,28 @@ position = Vector2( 328, 402 )
 [node name="Alchemist" parent="." instance=ExtResource( 22 )]
 position = Vector2( -95, 379 )
 z_index = -1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" parent="Alchemist/Node2D" index="1"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" parent="Alchemist/Node2D/InitialComment" index="0"]
+margin_left = -24.0
+margin_top = -21.5
+margin_right = 172.0
+margin_bottom = 9.5
+text = "Rock you are, only rock.
+And all the Gold you'll give me"
 
 [connection signal="coin_collected" from="Player" to="GUI/StatusGUI" method="_on_Player_coin_collected"]
 [connection signal="enemy_detected" from="Player" to="Player" method="_on_Player_enemy_detected"]
 [connection signal="enemy_detected" from="Player" to="Enemy" method="_on_Player_enemy_detected"]
 [connection signal="monolith_activation" from="Player" to="Monolith" method="_on_Player_monolith_activation"]
+[connection signal="monolith_activation" from="Player" to="ExitCave" method="_on_Player_monolith_activation"]
 [connection signal="rune_collected" from="Player" to="GUI/StatusGUI" method="_on_Player_rune_collected"]
 [connection signal="rune_speed" from="Player" to="GUI/StatusGUI" method="_on_Player_rune_speed"]
 [connection signal="pressed" from="GUI/PauseBContainer/PauseButton" to="." method="_on_PauseButton_pressed"]
@@ -995,3 +1012,4 @@ z_index = -1
 [editable path="Enemy3"]
 [editable path="Enemy4"]
 [editable path="Enemy5"]
+[editable path="Alchemist"]

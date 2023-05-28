@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://assets/Comments/dialogue_rect.png" type="Texture" id=1]
 [ext_resource path="res://assets/alchemist/alchemist_idle.png" type="Texture" id=2]
 [ext_resource path="res://Alchemist.gd" type="Script" id=3]
+[ext_resource path="res://assets/Kenney Bold.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -23,13 +24,16 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 16, 24 )
 
+[sub_resource type="DynamicFont" id=5]
+size = 6
+outline_size = 1
+outline_color = Color( 0.333333, 0.243137, 0.176471, 1 )
+font_data = ExtResource( 4 )
+
 [node name="Alchemist" type="Area2D"]
 scale = Vector2( 2, 2 )
 collision_layer = 64
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
@@ -39,27 +43,37 @@ playing = true
 shape = SubResource( 4 )
 
 [node name="Node2D" type="Node2D" parent="."]
+z_index = -1
 
 [node name="Tween" type="Tween" parent="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="Node2D"]
-visible = false
 modulate = Color( 0.996078, 1, 1, 1 )
 self_modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 58.625, -54.625 )
+position = Vector2( 54.5, -48 )
 scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Label" type="Label" parent="Node2D/Sprite"]
-margin_left = -30.0
-margin_top = -18.0
-margin_right = 26.0
-margin_bottom = 13.0
-text = "Hola 
-Puberto"
+margin_left = -18.5
+margin_top = -16.5
+margin_right = 26.5
+margin_bottom = 14.5
+custom_fonts/font = SubResource( 5 )
+text = "Bring me
+the Gold"
+
+[node name="InitialComment" type="Sprite" parent="Node2D"]
+position = Vector2( 51.5, -48 )
+texture = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="Node2D/InitialComment"]
+margin_left = -16.0
+margin_top = -16.5
+margin_right = 29.0
+margin_bottom = 14.5
+custom_fonts/font = SubResource( 5 )
 
 [connection signal="area_entered" from="." to="." method="_on_Alchemist_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Alchemist_area_exited"]
+[connection signal="tween_all_completed" from="Node2D/Tween" to="." method="_on_Tween_tween_all_completed"]
