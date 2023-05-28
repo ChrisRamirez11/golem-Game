@@ -37,6 +37,7 @@ script = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -62,6 +63,8 @@ margin_bottom = 14.5
 custom_fonts/font = SubResource( 5 )
 text = "Bring me
 the Gold"
+align = 1
+valign = 1
 
 [node name="InitialComment" type="Sprite" parent="Node2D"]
 position = Vector2( 51.5, -48 )
@@ -73,6 +76,8 @@ margin_top = -16.5
 margin_right = 29.0
 margin_bottom = 14.5
 custom_fonts/font = SubResource( 5 )
+align = 1
+valign = 1
 
 [connection signal="area_entered" from="." to="." method="_on_Alchemist_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Alchemist_area_exited"]
