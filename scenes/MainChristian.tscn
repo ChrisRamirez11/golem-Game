@@ -762,7 +762,7 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 3
+frame = 0
 
 [node name="WaterTile" type="TileMap" parent="."]
 position = Vector2( -40, 88 )
@@ -917,21 +917,36 @@ __meta__ = {
 "_edit_group_": true
 }
 
+[node name="AnimatedSprite" parent="Enemy" index="0"]
+frame = 0
+
 [node name="Enemy2" parent="." instance=ExtResource( 12 )]
 position = Vector2( 4104, 352 )
 scale = Vector2( 1.5, 1.5 )
+
+[node name="AnimatedSprite" parent="Enemy2" index="0"]
+frame = 0
 
 [node name="Enemy3" parent="." instance=ExtResource( 12 )]
 position = Vector2( 4832, 16 )
 scale = Vector2( 1.5, 1.5 )
 
+[node name="AnimatedSprite" parent="Enemy3" index="0"]
+frame = 0
+
 [node name="Enemy4" parent="." instance=ExtResource( 12 )]
 position = Vector2( 4880, -320 )
 scale = Vector2( 1.5, 1.5 )
 
+[node name="AnimatedSprite" parent="Enemy4" index="0"]
+frame = 0
+
 [node name="Enemy5" parent="." instance=ExtResource( 12 )]
 position = Vector2( 5152, -320 )
 scale = Vector2( 1.5, 1.5 )
+
+[node name="AnimatedSprite" parent="Enemy5" index="0"]
+frame = 0
 
 [node name="Monolith" parent="." instance=ExtResource( 14 )]
 position = Vector2( 5472, -56 )
@@ -957,9 +972,6 @@ z_index = -1
 __meta__ = {
 "_edit_group_": true
 }
-
-[node name="AnimatedSprite" parent="Alchemist" index="0"]
-frame = 0
 
 [node name="Sprite" parent="Alchemist/Node2D" index="1"]
 __meta__ = {
