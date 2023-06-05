@@ -69,15 +69,19 @@ extents = Vector2( 13, 29.5 )
 extents = Vector2( 12.6667, 28.6667 )
 
 [node name="Player" type="KinematicBody2D"]
+position = Vector2( 288, 288 )
 scale = Vector2( 1.5, 1.5 )
 collision_mask = 18
 moving_platform_apply_velocity_on_leave = 2
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_vertical_guides_": [ 16.0 ]
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 9 )
 animation = "idle"
-frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -94,7 +98,6 @@ shape = SubResource( 14 )
 current = true
 limit_left = 18
 limit_top = -10000
-limit_smoothed = true
 smoothing_enabled = true
 script = ExtResource( 4 )
 

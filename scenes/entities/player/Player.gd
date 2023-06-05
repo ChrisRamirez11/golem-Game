@@ -5,6 +5,7 @@ signal rune_collected
 signal coin_collected
 signal enemy_detected
 signal monolith_activation
+signal died
 
 export (int) var gravity = 1600
 export (int) var jump_force = -600
@@ -45,7 +46,6 @@ func _physics_process(delta):
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
-	
 	_sounds()
 	get_coin()
 	is_on_water()
@@ -78,7 +78,8 @@ func is_on_water():
 	for area in areas:
 		if area.is_in_group("Damagers"):
 			damage_ctrl(area.damage)
-			water_sound.play()
+			if !water_sound.is_playing():
+				water_sound.play()
 
 
 func get_coin():
@@ -93,7 +94,8 @@ func get_coin():
 
 func damage_ctrl(damage):
 	tween_hurt()
-	hurt_sound.play()
+	if !hurt_sound.is_playing():
+		hurt_sound.play()
 	if health > 0:
 		health -= damage
 	else:
@@ -164,7 +166,3 @@ func _sounds():
 		grounded.play()
 		jumping=false
 
-
-
-func _on_walk_sound_finished() -> void:
-	walk_sound.stop()

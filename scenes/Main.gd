@@ -2,6 +2,7 @@ extends Node2D
 
 var PauseMenu: String = "res://scenes/PauseMenu.tscn"
 var pause_menu: Object = null
+onready var player: KinematicBody2D = $Player
 
 func _ready() -> void:
 	OS.center_window()
@@ -13,7 +14,7 @@ func _process(delta):
 
 
 func _on_PauseButton_pressed():
-	if Input.is_action_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("ui_cancel"):
 		if pause_menu == null:
 			pause_menu = load(PauseMenu).instance()
 			$GUI/PauseScreen.add_child(pause_menu)
