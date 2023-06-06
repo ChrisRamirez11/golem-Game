@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/Player/idle/AnimationHidleSheet.png" type="Texture" id=1]
 [ext_resource path="res://assets/Player/walk/GolemAnimationWalkSheet.png" type="Texture" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://scenes/entities/player/Player.gd" type="Script" id=5]
 [ext_resource path="res://assets/sounds/Kabra - goldenSOUND 2023-05-22 23_12.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/sounds/walkSoundGolem~1.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sounds/The Golem Sounds/golem_hurt.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/The Golem Sounds/Kabra - on water sound 2023-06-05 20_47.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sounds/The Golem Sounds/Kabra - rune collected sound 2023-06-05 21_50.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sounds/The Golem Sounds/Kabra - golem hurted sound 2023-06-05 20_38.wav" type="AudioStream" id=11]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -82,6 +86,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 9 )
 animation = "idle"
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -117,18 +122,26 @@ pitch_scale = 2.2
 attenuation = 1.10957
 
 [node name="Hurt_Sound" type="AudioStreamPlayer2D" parent="Node2D"]
+stream = ExtResource( 11 )
 
 [node name="Grounded" type="AudioStreamPlayer2D" parent="Node2D"]
 
 [node name="water_sound" type="AudioStreamPlayer2D" parent="Node2D"]
+stream = ExtResource( 9 )
+volume_db = -3.0
 
 [node name="rune_collected" type="AudioStreamPlayer2D" parent="Node2D"]
+stream = ExtResource( 10 )
+volume_db = -7.0
 
 [node name="gold_collected" type="AudioStreamPlayer2D" parent="Node2D"]
 stream = ExtResource( 6 )
 volume_db = -8.0
 pitch_scale = 2.0
 attenuation = 2.0
+
+[node name="water_hurt" type="AudioStreamPlayer2D" parent="Node2D"]
+stream = ExtResource( 8 )
 
 [connection signal="rune_speed" from="." to="." method="_on_Player_rune_speed"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]

@@ -22,6 +22,7 @@ onready var grounded: AudioStreamPlayer2D = $Node2D/Grounded
 onready var water_sound: AudioStreamPlayer2D = $Node2D/water_sound
 onready var rune_collected: AudioStreamPlayer2D = $Node2D/rune_collected
 onready var gold_collected: AudioStreamPlayer2D = $Node2D/gold_collected
+onready var water_hurt: AudioStreamPlayer2D =$Node2D/water_hurt
 
 onready var pitch_vel := walk_sound.get_pitch_scale()
 
@@ -40,9 +41,7 @@ func _physics_process(delta):
 	get_input()
 	process_animations()
 	velocity.y += gravity * delta
-	if is_jumping and is_on_floor():
-		is_jumping = true
-	else: is_jumping = false
+	is_jumping_control()
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
@@ -63,6 +62,13 @@ func get_input():
 		is_jumping = true
 		velocity.y = jump_force
 
+
+func is_jumping_control():
+	if is_jumping and is_on_floor():
+		is_jumping = true
+	else: is_jumping = false
+
+
 func process_animations():
 	if velocity.length() != 0:
 		if !is_on_floor():
@@ -78,7 +84,9 @@ func is_on_water():
 	for area in areas:
 		if area.is_in_group("Damagers"):
 			damage_ctrl(area.damage)
-			if !water_sound.is_playing():
+			if !water_hurt.is_playing():
+				water_hurt.play()
+			if !water_sound.is_playing() and velocity.x != 0:
 				water_sound.play()
 
 
@@ -94,8 +102,6 @@ func get_coin():
 
 func damage_ctrl(damage):
 	tween_hurt()
-	if !hurt_sound.is_playing():
-		hurt_sound.play()
 	if health > 0:
 		health -= damage
 	else:
@@ -115,6 +121,8 @@ func _on_HurtBox_area_entered(area):
 		velocity.x += -1000
 		velocity = move_and_slide(velocity, Vector2.UP)
 		camera_2d.shake()
+		if !hurt_sound.is_playing():
+			hurt_sound.play()
 		tween_hurt()
 		emit_signal("enemy_detected")
 		enemy_collision_setter_false(area)

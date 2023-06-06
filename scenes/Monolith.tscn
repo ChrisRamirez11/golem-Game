@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/runes/golden_monolith.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Monolith.gd" type="Script" id=2]
+[ext_resource path="res://assets/sounds/The Golem Sounds/MAGIC RUNE CIRCLE 5 SOUND EFFECT - FREE(MP3_128K).wav" type="AudioStream" id=3]
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
@@ -32,6 +34,8 @@ animations = [ {
 } ]
 
 [node name="Monolith" type="Area2D"]
+scale = Vector2( 2, 2 )
+script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 5 )
@@ -41,3 +45,7 @@ animation = "stoped"
 position = Vector2( 0, 0.599999 )
 scale = Vector2( 1, 0.988281 )
 polygon = PoolVector2Array( 0, -32.9866, 14, -8.70197, 13, 21.6538, 6, 31.7723, -11, 31.7723, -16, 24, -17, -17.8087 )
+
+[node name="Opening" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = 3.0

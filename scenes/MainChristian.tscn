@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://scenes/entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/TileMap/tile00.png" type="Texture" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/gui/button_pause.png" type="Texture" id=13]
 [ext_resource path="res://scenes/Monolith.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/Monolith.gd" type="Script" id=15]
 [ext_resource path="res://scenes/ExitCave.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/TileMap/tile01.png" type="Texture" id=17]
 [ext_resource path="res://assets/waterTile/waterTile_animatedtexture.tres" type="Texture" id=18]
@@ -913,27 +912,40 @@ __meta__ = {
 "_edit_group_": true
 }
 
+[node name="AnimatedSprite" parent="Enemy" index="0"]
+frame = 0
+
 [node name="Enemy2" parent="." instance=ExtResource( 12 )]
 position = Vector2( 4104, 352 )
 scale = Vector2( 1.5, 1.5 )
+
+[node name="AnimatedSprite" parent="Enemy2" index="0"]
+frame = 0
 
 [node name="Enemy3" parent="." instance=ExtResource( 12 )]
 position = Vector2( 4832, 16 )
 scale = Vector2( 1.5, 1.5 )
 
+[node name="AnimatedSprite" parent="Enemy3" index="0"]
+frame = 0
+
 [node name="Enemy4" parent="." instance=ExtResource( 12 )]
 position = Vector2( 4880, -320 )
 scale = Vector2( 1.5, 1.5 )
+
+[node name="AnimatedSprite" parent="Enemy4" index="0"]
+frame = 0
 
 [node name="Enemy5" parent="." instance=ExtResource( 12 )]
 position = Vector2( 5152, -320 )
 scale = Vector2( 1.5, 1.5 )
 
+[node name="AnimatedSprite" parent="Enemy5" index="0"]
+frame = 0
+
 [node name="Monolith" parent="." instance=ExtResource( 14 )]
-position = Vector2( 5472, -56 )
-scale = Vector2( 1.5, 1.5 )
+position = Vector2( 5466, -72 )
 z_index = -1
-script = ExtResource( 15 )
 
 [node name="ExitCave" parent="." instance=ExtResource( 16 )]
 position = Vector2( 6056, -216 )
@@ -948,23 +960,29 @@ z_index = -1
 position = Vector2( 328, 402 )
 
 [node name="Alchemist" parent="." instance=ExtResource( 22 )]
-position = Vector2( -88, 368 )
+position = Vector2( -95, 390 )
 z_index = -1
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="AnimatedSprite" parent="Alchemist" index="0"]
+frame = 1
 
 [node name="Sprite" parent="Alchemist/Node2D" index="1"]
 __meta__ = {
 "_edit_group_": true
 }
 
+[node name="Label" parent="Alchemist/Node2D/Sprite" index="0"]
+autowrap = true
+
 [node name="Label" parent="Alchemist/Node2D/InitialComment" index="0"]
 margin_left = -24.0
 margin_top = -21.0
 margin_right = 133.0
 margin_bottom = 10.0
-text = "My tiny golem.
+text = "My  golem.
 Rock you are, only rock.
 And all the Gold you'll give me."
 

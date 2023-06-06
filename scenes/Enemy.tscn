@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemies/scarab_walk.png" type="Texture" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://assets/sounds/Audio Scrab.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/sounds/The Golem Sounds/Kabra - Scrab hurt 2023-06-05 20_31.wav" type="AudioStream" id=5]
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 2 )
@@ -71,6 +72,9 @@ stream = ExtResource( 4 )
 volume_db = -10.0
 max_distance = 700.0
 attenuation = 2.0
+
+[node name="DeadSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 scale = Vector2( 2, 2 )

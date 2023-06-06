@@ -31,13 +31,12 @@ outline_color = Color( 0.333333, 0.243137, 0.176471, 1 )
 font_data = ExtResource( 4 )
 
 [node name="Alchemist" type="Area2D"]
-scale = Vector2( 2.5, 2.5 )
+scale = Vector2( 1.5, 1.5 )
 collision_layer = 64
 script = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

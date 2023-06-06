@@ -15,7 +15,7 @@ outline_color = Color( 0.333333, 0.243137, 0.176471, 1 )
 font_data = SubResource( 4 )
 
 [sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.576471, 0.490196, 0.0901961, 0.643137 )
+bg_color = Color( 0.576471, 0.490196, 0.0901961, 0.345098 )
 border_blend = true
 corner_radius_top_left = 45
 corner_radius_top_right = 45
@@ -38,7 +38,7 @@ outline_color = Color( 0.333333, 0.243137, 0.176471, 1 )
 font_data = SubResource( 6 )
 
 [sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 0.576471, 0.490196, 0.0901961, 0.643137 )
+bg_color = Color( 0.576471, 0.490196, 0.0901961, 0.345098 )
 border_blend = true
 corner_radius_top_left = 45
 corner_radius_top_right = 45
@@ -115,6 +115,8 @@ align = 1
 [node name="focus" type="AudioStreamPlayer2D" parent="."]
 pause_mode = 2
 stream = ExtResource( 4 )
+max_distance = 100000.0
+attenuation = 1.1487e-05
 
 [connection signal="focus_entered" from="ColorRect/VBoxContainer/Continue" to="." method="_on_Continue_focus_entered"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Continue" to="." method="_on_Continue_pressed"]

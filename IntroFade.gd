@@ -16,10 +16,6 @@ func _ready() -> void:
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 
-func _process(delta: float) -> void:
-	if Input.is_action_pressed("ui_cancel"):
-		queue_free()
-
 
 func _on_Timer_timeout() -> void:
 	queue_free()

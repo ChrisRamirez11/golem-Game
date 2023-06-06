@@ -13,6 +13,7 @@ onready var area_2d: Area2D = $Area2D
 onready var enemy_area: Area2D = $EnemyArea
 #sound
 onready var walking: AudioStreamPlayer2D = $Walking
+onready var dead_sound: AudioStreamPlayer2D = $DeadSound
 
 func _ready() -> void:
 	velocity.x = -speed
@@ -41,7 +42,9 @@ func _physics_process(delta: float) -> void:
 func _on_Area2D_area_entered(area: Area2D) -> void:
 	if area.get_global_position().y + PLAYER_HBPOSITION_TO_FOOT_DISTANCE < area_2d.get_global_position().y:
 		if area.get_parent().name == "Player":
+			set_physics_process(false)
 			player.velocity.y = -600
+			dead_sound.play()
 			animated_sprite.play("dead")
 
 
