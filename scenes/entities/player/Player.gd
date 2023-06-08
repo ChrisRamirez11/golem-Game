@@ -105,7 +105,7 @@ func damage_ctrl(damage):
 	if health > 0:
 		health -= damage
 	else:
-		get_tree().reload_current_scene()
+		emit_signal("died")
 
 
 func _on_HurtBox_area_entered(area):

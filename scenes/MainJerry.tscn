@@ -14,7 +14,7 @@
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/gui/button_pause.png" type="Texture" id=13]
 [ext_resource path="res://scenes/Monolith.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/Monolith.gd" type="Script" id=15]
+[ext_resource path="res://scenes/DeathZone.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/ExitCave.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/TileMap/tile01.png" type="Texture" id=17]
 [ext_resource path="res://assets/waterTile/waterTile_animatedtexture.tres" type="Texture" id=18]
@@ -760,7 +760,7 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 0
+frame = 1
 
 [node name="WaterTile" type="TileMap" parent="."]
 position = Vector2( -40, 88 )
@@ -807,6 +807,8 @@ text = "/
 
 
 "
+
+[node name="GameOverScreen" type="CanvasLayer" parent="GUI"]
 
 [node name="PauseScreen" type="CanvasLayer" parent="GUI"]
 
@@ -912,27 +914,41 @@ z_index = -2
 position = Vector2( 1640, 450 )
 scale = Vector2( 1.5, 1.5 )
 
+[node name="AnimatedSprite" parent="Enemy" index="0"]
+frame = 0
+
 [node name="Enemy2" parent="." instance=ExtResource( 12 )]
 position = Vector2( 4104, 352 )
 scale = Vector2( 1.5, 1.5 )
+
+[node name="AnimatedSprite" parent="Enemy2" index="0"]
+frame = 0
 
 [node name="Enemy3" parent="." instance=ExtResource( 12 )]
 position = Vector2( 4832, 16 )
 scale = Vector2( 1.5, 1.5 )
 
+[node name="AnimatedSprite" parent="Enemy3" index="0"]
+frame = 0
+
 [node name="Enemy4" parent="." instance=ExtResource( 12 )]
 position = Vector2( 4880, -320 )
 scale = Vector2( 1.5, 1.5 )
+
+[node name="AnimatedSprite" parent="Enemy4" index="0"]
+frame = 0
 
 [node name="Enemy5" parent="." instance=ExtResource( 12 )]
 position = Vector2( 5152, -320 )
 scale = Vector2( 1.5, 1.5 )
 
+[node name="AnimatedSprite" parent="Enemy5" index="0"]
+frame = 0
+
 [node name="Monolith" parent="." instance=ExtResource( 14 )]
 position = Vector2( 1896, 424 )
 scale = Vector2( 1.5, 1.5 )
 z_index = -1
-script = ExtResource( 15 )
 
 [node name="ExitCave" parent="." instance=ExtResource( 16 )]
 position = Vector2( 3736, -360 )
@@ -943,7 +959,14 @@ position = Vector2( -143, 352 )
 scale = Vector2( 1.5, 1.5 )
 z_index = -1
 
+[node name="DeathZone" parent="." instance=ExtResource( 15 )]
+position = Vector2( 1110, 489 )
+
+[node name="CollisionShape2D" parent="DeathZone" index="0"]
+position = Vector2( 115, 52 )
+
 [connection signal="coin_collected" from="Player" to="GUI/StatusGUI" method="_on_Player_coin_collected"]
+[connection signal="died" from="Player" to="." method="_on_Player_died"]
 [connection signal="enemy_detected" from="Player" to="Player" method="_on_Player_enemy_detected"]
 [connection signal="enemy_detected" from="Player" to="Enemy" method="_on_Player_enemy_detected"]
 [connection signal="monolith_activation" from="Player" to="Monolith" method="_on_Player_monolith_activation"]
@@ -967,3 +990,4 @@ z_index = -1
 [editable path="Enemy3"]
 [editable path="Enemy4"]
 [editable path="Enemy5"]
+[editable path="DeathZone"]

@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_Area2D_area_entered(area: Area2D) -> void:
 	if area.get_global_position().y + PLAYER_HBPOSITION_TO_FOOT_DISTANCE < area_2d.get_global_position().y:
-		if area.get_parent().name == "Player":
+		
 			set_physics_process(false)
 			player.velocity.y = -600
 			dead_sound.play()
