@@ -75,6 +75,7 @@ extents = Vector2( 12.6667, 28.6667 )
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 288, 288 )
 scale = Vector2( 1.5, 1.5 )
+z_index = 10
 collision_mask = 18
 moving_platform_apply_velocity_on_leave = 2
 script = ExtResource( 5 )
@@ -133,6 +134,7 @@ volume_db = -3.0
 [node name="rune_collected" type="AudioStreamPlayer2D" parent="Node2D"]
 stream = ExtResource( 10 )
 volume_db = -7.0
+pitch_scale = 1.5
 
 [node name="gold_collected" type="AudioStreamPlayer2D" parent="Node2D"]
 stream = ExtResource( 6 )
