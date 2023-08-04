@@ -7,5 +7,5 @@ func _ready():
 
 
 func _on_RetryButton_pressed():
-	get_tree().change_scene("res://scenes/MainJerry.tscn")
+	get_tree().reload_current_scene()
 	self.queue_free()

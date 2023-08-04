@@ -5,6 +5,7 @@ var pause_menu: Object = null
 var GameOverMenu: String = "res://scenes/GameOver.tscn"
 var gameover_menu: Object = null
 onready var player: KinematicBody2D = $Player
+onready var end_game: Area2D = $EndGame
 
 func _ready() -> void:
 	OS.center_window()
@@ -31,6 +32,19 @@ func on_paused_quit():
 
 func _on_Player_died():
 	player.hide() # 'quee_free' eliminaria la camara y la screen se instanciaria en el origen
-	gameover_menu = load(GameOverMenu).instance()
-	$GUI/GameOverScreen.add_child(gameover_menu)
-	get_tree().paused = true
+	if gameover_menu == null:
+		gameover_menu = load(GameOverMenu).instance()
+		$GUI/GameOverScreen.add_child(gameover_menu)
+		get_tree().paused = true
+
+
+
+
+func _on_EndGame_body_entered(body: Node) -> void:
+	if body.name == player.name:
+		_on_Player_died()
+
+
+func _on_ChangeScene_body_entered(body: Node) -> void:
+	if body.name == player.name:
+		get_tree().change_scene("res://Level2Intro.tscn")

@@ -26,4 +26,4 @@ func _on_Tween_tween_all_completed() -> void:
 	tween.interpolate_property(story_tell, "modulate", story_tell.modulate, color, 4, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	tween.start()
 	yield(tween, "tween_all_completed")
-	get_tree().change_scene("res://scenes/MainJerry.tscn")
+	get_tree().change_scene("res://scenes/MainChristian.tscn")
